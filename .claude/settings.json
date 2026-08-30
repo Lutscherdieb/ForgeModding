@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "claudebase": {
+      "source": {
+        "source": "github",
+        "repo": "Lutscherdieb/ClaudeBase"
+      }
+    }
+  },
+  "enabledPlugins": [
+    "base@claudebase"
+  ]
+}

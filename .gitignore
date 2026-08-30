@@ -1,0 +1,35 @@
+# Machine-local state — never versioned (no personal data / machine paths in git; see CLAUDE.md)
+*.local.json
+*.local.md
+references.local.json
+
+# Claude Code local session state
+.claude/settings.local.json
+.claude/.session/
+
+# Tooling cruft
+__pycache__/
+*.pyc
+
+# OS cruft
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Project-specific ignores (scaffolder appends toolchain-appropriate entries here)
+# Verify evidence — regenerated, never authored
+verify-report.txt
+
+# Engine workspace: the Forge clone lives OUTSIDE this repo; only patches are tracked
+engine/workspace/
+engine/build/
+
+# Java / Maven artefacts, should any ever land here
+target/
+*.class
+*.jar
+
+# Authoring-tool cruft
+*.tmx.autosave
+*.xcf
+*.ase

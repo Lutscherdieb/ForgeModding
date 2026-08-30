@@ -1,0 +1,186 @@
+{
+  "schema": 1,
+  "project": "ForgeModding",
+  "created": "2026-08-30",
+  "base_version_at_creation": "0.0.3",
+  "last_synced_version": "0.0.3",
+  "profile": "game-mod",
+  "toolchain": {
+    "content": {
+      "language": "python3",
+      "version_seen": "3.12.10",
+      "build": "none - content is data, deployed not compiled",
+      "wrappers": [
+        "tools/deploy.cmd",
+        "tools/verify.cmd"
+      ],
+      "formats": [
+        "json",
+        "tiled .tmx",
+        "libgdx .atlas",
+        ".dck",
+        "forge card DSL .txt"
+      ]
+    },
+    "engine": {
+      "language": "java",
+      "jdk_seen": "openjdk 26.0.2.1",
+      "jdk_target": "unverified against Forge's build [I]",
+      "build_tool": "maven",
+      "status": "dormant",
+      "blocked_on": [
+        "mvn not installed",
+        "no workspace clone"
+      ],
+      "workspace_binding": "engine/workspace.local.json (gitignored)"
+    },
+    "android": {
+      "deploy": "adb push",
+      "status": "dormant",
+      "blocked_on": [
+        "adb not installed"
+      ],
+      "fallback": "MTP"
+    },
+    "authoring_tools": [
+      "Adventure Editor (adventure-editor.cmd)",
+      "Tiled",
+      "GIMP / Aseprite",
+      "gdx-particle-editor.jar"
+    ]
+  },
+  "modules": {
+    "docs": true,
+    "verify": true,
+    "references": true,
+    "harvest": true,
+    "audit": true
+  },
+  "interview": {
+    "q1_name_goal": "ForgeModding - author and maintain MTG Forge Adventure Mode content, and the engine patches some of it needs, as a standalone deployable mod repo",
+    "q2_description_nongoals_users": "Non-goals chosen: not a Forge install mirror; not an upstream contribution pipeline. Explicitly NOT chosen as non-goals, and so recorded as in-scope or deferred: Java engine work, own authoring tooling. Users: me.",
+    "q3_profile": "game-mod",
+    "q4_toolchain": "Python 3 + .cmd wrappers for content; JDK + Maven for the engine track",
+    "q5_verify": "Linter writing a report artifact: python tools/verify.py > verify-report.txt; evidence verify-report.txt; exempt **/*.md",
+    "q6_references": "forge-docs, forge-common, forge-card-corpus, forge-token-corpus, forge-upstream. Engine workspace deliberately excluded - it is a mutable build area, protected by a prose rule instead of the hook.",
+    "q7_doc_contract": "README + docs/ARCHITECTURE.md + OWNERSHIP.md, extended with docs/ENGINE.md when the engine track was added",
+    "q8_doc_map": "planes+engine -> OWNERSHIP.md; engine -> docs/ENGINE.md; tools+custom -> docs/ARCHITECTURE.md; tools -> README.md",
+    "q9_gate_strictness": "preview-and-approve on",
+    "q10_git": "push to the existing public remote https://github.com/Lutscherdieb/ForgeModding.git",
+    "q11_generators": "none yet",
+    "q12_modules": "all on",
+    "followup_engine_track": "Patch series in-repo, Forge clone outside. PC now, Android APK deferred as a declared milestone. Scaffold the pipeline and flag it dormant rather than installing Maven during the scaffold session.",
+    "scaffold_notes": "Target directory was non-empty: FORGE_MODDING_ASSESSMENT.md moved to docs/ unstripped, recorded as a knowing divergence from the no-machine-paths rule in PROJECT.md's direction notes."
+  },
+  "doc_map": [
+    {
+      "sources": [
+        "planes/**",
+        "engine/**"
+      ],
+      "doc": "OWNERSHIP.md"
+    },
+    {
+      "sources": [
+        "engine/**"
+      ],
+      "doc": "docs/ENGINE.md"
+    },
+    {
+      "sources": [
+        "tools/**",
+        "custom/**"
+      ],
+      "doc": "docs/ARCHITECTURE.md"
+    },
+    {
+      "sources": [
+        "tools/**"
+      ],
+      "doc": "README.md"
+    }
+  ],
+  "source_globs": [
+    "planes/**",
+    "custom/**",
+    "tools/**",
+    "engine/**"
+  ],
+  "verify": {
+    "command": "python tools/verify.py > verify-report.txt",
+    "evidence": "verify-report.txt",
+    "exempt_patterns": [
+      "**/*.md"
+    ]
+  },
+  "readonly_refs": [
+    {
+      "id": "forge-docs",
+      "kind": "document",
+      "local": true,
+      "committed_path": null,
+      "url": null,
+      "volatility": "frozen-snapshot"
+    },
+    {
+      "id": "forge-common",
+      "kind": "dataset",
+      "local": true,
+      "committed_path": null,
+      "url": null,
+      "volatility": "frozen-snapshot"
+    },
+    {
+      "id": "forge-card-corpus",
+      "kind": "dataset",
+      "local": true,
+      "committed_path": null,
+      "url": null,
+      "volatility": "frozen-snapshot"
+    },
+    {
+      "id": "forge-token-corpus",
+      "kind": "dataset",
+      "local": true,
+      "committed_path": null,
+      "url": null,
+      "volatility": "frozen-snapshot"
+    },
+    {
+      "id": "forge-upstream",
+      "kind": "upstream-repo",
+      "local": false,
+      "committed_path": null,
+      "url": "https://github.com/Card-Forge/forge",
+      "volatility": "live"
+    }
+  ],
+  "generators": [],
+  "region_state": {
+    "CLAUDE.md#doctrine-header": {
+      "rev": 1,
+      "hash": "sha256:e9d3f44cc03f64bd79438e9c25627c215cba11429dab32c2c9c44097028246c4"
+    },
+    "CLAUDE.md#doctrine-references": {
+      "rev": 1,
+      "hash": "sha256:a84d39f620d7b019ad7f0d14f3262562ed541aec93482afee303b6802460effe"
+    },
+    "CLAUDE.md#doctrine-writeback": {
+      "rev": 1,
+      "hash": "sha256:8d77f59a95b60cdf7d11c2c348176f7a5a790f99e74d4280107c4212ebf659c7"
+    },
+    "CLAUDE.md#doctrine-docs": {
+      "rev": 2,
+      "hash": "sha256:e2041e3904f39c2c4920eadf02afee3cef18c4e338de55d6fd462bdb5030afe0"
+    },
+    "CLAUDE.md#doctrine-verify": {
+      "rev": 1,
+      "hash": "sha256:12f090329fe6761527d0eeb771e9de4b261044b92d2366d2fca39b885f0ae4a3"
+    },
+    "README.md#readme-footer": {
+      "rev": 1,
+      "hash": "sha256:e3fb8bf7642b628e56a959dbd9b325017f591f023cacc50ce368a45b21fc5849"
+    }
+  },
+  "divergences": []
+}

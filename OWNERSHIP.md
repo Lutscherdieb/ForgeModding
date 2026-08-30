@@ -1,0 +1,47 @@
+# ForgeModding — ownership ledger
+
+**What this repo has forked, and from which upstream build.** One row per forked file. Written in the *same edit* that creates the fork — reconstructing this later is archaeology, keeping it now is free.
+
+Why it matters: Forge resolves plane files plane-first with `common/` fallback, at **whole-file granularity, with no merge**. The moment this repo ships its own `enemies.json`, it owns every entry in it and inherits nothing common adds afterwards. Asset *paths* referenced inside those files still resolve into `common/` and cost nothing. So the ledger is the record of where this repo took on permanent maintenance, and it is what turns "upstream added 40 enemies" into a diff.
+
+Worked example of the asymmetry: `Realm of Legends` forked `enemies.json` and owns all 956 of its entries while inheriting none of common's 464 — but ships only 5 sprite atlases against common's 493, because it references the rest by path.
+
+---
+
+## Content forks — files taken from `common/`
+
+Nothing forked yet.
+
+| File | Forked at `build.txt` | Why the fork was unavoidable | Re-check on upstream bump |
+|---|---|---|---|
+| *(none)* | | | |
+
+<!-- Row template:
+| `world/enemies.json` | `2026-08-20 18:53:10` | Needed N new entries; fallback replaces rather than merges, so adding one entry means owning the file. | Diff against the new stock file; port any upstream additions. |
+-->
+
+**Mandatory per-plane files are not forks.** `world.json`, `quests.json`, `shops.json` and `town_names_*.txt` do not exist in `common/world/` at all and therefore cannot fall back — every plane must ship its own. List them here only if one was seeded by copying a shipped plane's version, and say which plane it came from.
+
+---
+
+## Engine pin
+
+The engine patch series and the upstream commit it applies to. Details and the per-patch rationale live in [engine/PINNED.md](engine/PINNED.md); this section is the one-line summary so a single file answers "what does this repo own".
+
+| | |
+|---|---|
+| Upstream | `https://github.com/Card-Forge/forge` |
+| Pinned commit | *not yet pinned — workspace not bootstrapped* |
+| Pinned `build.txt` | *not yet pinned* |
+| Patches in series | 0 |
+
+---
+
+## Install this ledger was measured against
+
+| | |
+|---|---|
+| Forge version | `2.0.15-SNAPSHOT` |
+| `build.txt` | `2026-08-20 18:53:10` |
+
+Upstream publishes **daily** snapshots, so this drifts constantly. "Which upstream build am I forked from" is tracked state, not something to work out later — update this table whenever the install is upgraded, and re-check every row above.
