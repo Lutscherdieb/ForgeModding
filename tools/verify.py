@@ -943,6 +943,68 @@ def check_reward_duplicates(plane):
              % (plane, checked))
 
 
+def check_commander_mode_config(plane):
+    """A plane shipping [Commander] decks must be able to run them.
+
+    `DuelScene` picks GameType.Commander only when AdventurePlayer
+    .isCommanderMode() is true, which needs the save to be in the Commander /
+    CommanderPrecon mode or the plane's chaosDeckFormat to be "Commander".
+    Otherwise the format is GameType.Adventure, DeckFormat.Adventure
+    .hasCommander() is false, and every [Commander] section in the plane is
+    silently ignored - the enemy just plays 99 cards and no commander.
+    """
+    deck_root = os.path.join(C.REPO, "planes", plane, "decks")
+    has_commander_decks = False
+    for dirpath, _d, filenames in os.walk(deck_root):
+        for fn in filenames:
+            if not fn.endswith(".dck"):
+                continue
+            try:
+                with io.open(os.path.join(dirpath, fn), encoding="utf-8",
+                             errors="replace") as f:
+                    if "[commander]" in f.read().lower():
+                        has_commander_decks = True
+            except OSError:
+                pass
+    if not has_commander_decks:
+        emit("PASS", "commander-mode-config", "%s: no commander decks to run" % plane)
+        return
+    cfg, origin = load_plane_json(plane, "config.json")
+    if cfg is None:
+        emit("FAIL", "commander-mode-config",
+             "%s: ships [Commander] decks but has no config.json - it inherits "
+             "common's, which offers no Commander mode" % plane)
+        return
+    if origin != "plane":
+        emit("FAIL", "commander-mode-config",
+             "%s: ships [Commander] decks but uses common's config.json, which "
+             "offers no Commander mode" % plane)
+        return
+    bad = 0
+    difficulties = cfg.get("difficulties") or []
+    missing = [d.get("name", "?") for d in difficulties if not d.get("commanderDecks")]
+    if missing:
+        bad += 1
+        emit("FAIL", "commander-mode-config",
+             "%s: difficulty %s has no commanderDecks - a save started there "
+             "runs GameType.Adventure and ignores every [Commander] section"
+             % (plane, ", ".join(missing)))
+    if str(cfg.get("chaosDeckFormat", "")).lower() != "commander":
+        bad += 1
+        emit("FAIL", "commander-mode-config",
+             '%s: chaosDeckFormat is %r, not "Commander" - the Chaos mode would '
+             "run these decks without commanders" % (plane, cfg.get("chaosDeckFormat")))
+    if cfg.get("minDeckSize", 0) < 98:
+        bad += 1
+        emit("FAIL", "commander-mode-config",
+             "%s: minDeckSize is %s; a commander plane needs 98 or the player's "
+             "own deck is trimmed against the wrong floor"
+             % (plane, cfg.get("minDeckSize")))
+    if not bad:
+        emit("PASS", "commander-mode-config",
+             "%s: %d difficulty setting(s) offer Commander mode" % (plane, len(difficulties)))
+
+
 def check_biome_enemies(plane):
     """A biome must OMIT `enemies` rather than set it to [].
 
@@ -1146,6 +1208,7 @@ def main():
         check_tile_collision(plane)
         check_reachability(plane)
         check_reward_duplicates(plane)
+        check_commander_mode_config(plane)
         check_poi_wiring(plane)
         check_items(plane)
         check_battle_cards(plane)

@@ -77,6 +77,24 @@ A map without one renders its tiles perfectly and draws **nothing else** — no 
 
 The generated floors therefore ship an **empty** `Foreground` tile layer whose only job is to carry the property. `verify.py`'s `tmx-contracts` check fails the build without it, and also enforces 16×16 tiles, exactly one object layer, and a map at least as large as `config.json`'s `screenWidth` × `screenHeight`. **[B]**
 
+### Commander mode is a plane-config recipe, and it works
+
+A plane whose enemies ship 100-card decks is pointless unless the save is in Commander mode, because `DuelScene` picks `GameType.Commander` only when `AdventurePlayer.isCommanderMode()` — true for the `Commander` / `CommanderPrecon` adventure modes, or `Chaos` on a plane whose `chaosDeckFormat` is `"Commander"`. Otherwise the format is `GameType.Adventure`, `DeckFormat.Adventure.hasCommander()` is `false`, and every `[Commander]` section in the plane is quietly ignored.
+
+The recipe, confirmed in play on 2026-08-31 — a new save on this plane hands the player their commander and plays normal Commander matches:
+
+```json
+"minDeckSize": 98,
+"chaosDeckFormat": "Commander",
+"difficulties": [ { ..., "commanderDecks": { "W": "...", "U": "...", ... } } ]
+```
+
+Offering **only** `commanderDecks` on each difficulty — no `starterDecks`, `constructedStarterDecks` or `pileDecks` — leaves Commander as the only mode the new-game screen can pick, which is what makes this a recipe rather than a hope. **[F]**
+
+The enemy side needs no second setting and never did: `DuelScene` builds one `EnumSet` from that `GameType` and passes the *same* set to `RegisteredPlayer.forVariants` for both the human and the AI. Observed on 2026-08-31 — a vault roamer cast its own commander in a duel. **[F]**
+
+`verify.py`'s `commander-mode-config` check fails a plane that ships `[Commander]` decks without the config to run them.
+
 ### Card rewards draw *with replacement* — distinctness is bought with disjoint filters
 
 `CardUtil.generateCards()` loops `count` times over `filtered.get(rand.nextInt(filtered.size()))` and never removes what it drew. There is no field to change that: `getPredicateResult` is the only pool builder and both `CardPredicate` construction sites pass `shouldBeEqual = true`, so filters cannot even be negated. One `deckCard` entry asking for nine cards can therefore hand back the same card nine times — and since the `deckCard` pool is `Deck.getAllCardsInASinglePool().toFlatList()`, a Commander deck's 7–15 basic lands are that many separate entries and dominate the draw.
