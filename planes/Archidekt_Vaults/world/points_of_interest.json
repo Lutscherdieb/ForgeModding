@@ -1,0 +1,32 @@
+[
+ {
+  "name": "Vault Town",
+  "displayName": "Deckwright",
+  "type": "town",
+  "count": 1,
+  "spriteAtlas": "../common/maps/tileset/buildings.atlas",
+  "sprite": "PlainsTown",
+  "map": "../common/maps/map/towns/plains_town_generic.tmx",
+  "radiusFactor": 0.8,
+  "questTags": [
+   "Town",
+   "TownGeneric",
+   "QuestSource"
+  ]
+ },
+ {
+  "name": "Vault_lutscherdieb",
+  "displayName": "Lutscherdieb's Vault",
+  "type": "dungeon",
+  "count": 1,
+  "spriteAtlas": "../common/maps/tileset/buildings.atlas",
+  "sprite": "MageTower",
+  "map": "../Archidekt_Vaults/maps/map/vault/lutscherdieb_f1.tmx",
+  "radiusFactor": 0.8,
+  "questTags": [
+   "ArchidektVault",
+   "Dungeon",
+   "Hostile"
+  ]
+ }
+]

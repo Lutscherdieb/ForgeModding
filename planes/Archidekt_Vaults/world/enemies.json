@@ -1,0 +1,3011 @@
+[
+ {
+  "name": "lutscherdieb_ramses_assassins",
+  "nameOverride": "Ramses - Assassins",
+  "sprite": "sprites/enemy/humanoid/human/rogue/rogue.atlas",
+  "deck": [
+   "decks/lutscherdieb/ramses_assassins.dck"
+  ],
+  "ai": "",
+  "spawnRate": 0,
+  "difficulty": 0.14,
+  "speed": 22,
+  "life": 22,
+  "colors": "UB",
+  "rewards": [
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Common"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Common"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "type": "shards",
+    "probability": 1,
+    "count": 3,
+    "addMaxCount": 4
+   },
+   {
+    "type": "gold",
+    "probability": 1,
+    "count": 167,
+    "addMaxCount": 304
+   }
+  ],
+  "questTags": [
+   "ArchidektVault",
+   "Vault_lutscherdieb",
+   "VaultFloor1"
+  ]
+ },
+ {
+  "name": "lutscherdieb_ramos_charmslinger_paradigm_token",
+  "nameOverride": "Ramos - Charmslinger/Paradigm/Token",
+  "sprite": "sprites/enemy/dragon/ancientsilverdragon.atlas",
+  "deck": [
+   "decks/lutscherdieb/ramos_charmslinger_paradigm_token.dck"
+  ],
+  "ai": "",
+  "spawnRate": 0,
+  "difficulty": 0.185,
+  "speed": 23,
+  "life": 24,
+  "colors": "WUBRG",
+  "rewards": [
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Common"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "shards",
+    "probability": 1,
+    "count": 3,
+    "addMaxCount": 5
+   },
+   {
+    "type": "gold",
+    "probability": 1,
+    "count": 195,
+    "addMaxCount": 354
+   }
+  ],
+  "questTags": [
+   "ArchidektVault",
+   "Vault_lutscherdieb",
+   "VaultFloor1"
+  ]
+ },
+ {
+  "name": "lutscherdieb_morcant_elves_counter",
+  "nameOverride": "Morcant - Elves /  Counter",
+  "sprite": "sprites/enemy/humanoid/elf/druid.atlas",
+  "deck": [
+   "decks/lutscherdieb/morcant_elves_counter.dck"
+  ],
+  "ai": "",
+  "spawnRate": 0,
+  "difficulty": 0.186,
+  "speed": 27,
+  "life": 24,
+  "colors": "BG",
+  "rewards": [
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Common"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "shards",
+    "probability": 1,
+    "count": 3,
+    "addMaxCount": 5
+   },
+   {
+    "type": "gold",
+    "probability": 1,
+    "count": 195,
+    "addMaxCount": 355
+   }
+  ],
+  "questTags": [
+   "ArchidektVault",
+   "Vault_lutscherdieb",
+   "VaultFloor1"
+  ]
+ },
+ {
+  "name": "lutscherdieb_vren_removal_rat_colony",
+  "nameOverride": "Vren - Removal / Rat Colony",
+  "sprite": "sprites/enemy/humanoid/nezumi/nezumi_berserker.atlas",
+  "deck": [
+   "decks/lutscherdieb/vren_removal_rat_colony.dck"
+  ],
+  "ai": "",
+  "spawnRate": 0,
+  "difficulty": 0.251,
+  "speed": 25,
+  "life": 26,
+  "colors": "UB",
+  "rewards": [
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Common"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "shards",
+    "probability": 1,
+    "count": 4,
+    "addMaxCount": 6
+   },
+   {
+    "type": "gold",
+    "probability": 1,
+    "count": 236,
+    "addMaxCount": 426
+   }
+  ],
+  "questTags": [
+   "ArchidektVault",
+   "Vault_lutscherdieb",
+   "VaultFloor1"
+  ]
+ },
+ {
+  "name": "lutscherdieb_edgar_vamps",
+  "nameOverride": "Edgar - Vamps",
+  "sprite": "sprites/enemy/undead/vampire_2.atlas",
+  "deck": [
+   "decks/lutscherdieb/edgar_vamps.dck"
+  ],
+  "ai": "",
+  "spawnRate": 0,
+  "difficulty": 0.282,
+  "speed": 28,
+  "life": 27,
+  "colors": "WBR",
+  "rewards": [
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Common"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "shards",
+    "probability": 1,
+    "count": 4,
+    "addMaxCount": 6
+   },
+   {
+    "type": "gold",
+    "probability": 1,
+    "count": 255,
+    "addMaxCount": 460
+   }
+  ],
+  "questTags": [
+   "ArchidektVault",
+   "Vault_lutscherdieb",
+   "VaultFloor1"
+  ]
+ },
+ {
+  "name": "lutscherdieb_valgavoth",
+  "nameOverride": "Valgavoth",
+  "sprite": "sprites/enemy/fiend/valyx.atlas",
+  "deck": [
+   "decks/lutscherdieb/valgavoth.dck"
+  ],
+  "ai": "",
+  "spawnRate": 0,
+  "difficulty": 0.295,
+  "speed": 25,
+  "life": 27,
+  "colors": "BR",
+  "rewards": [
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Common"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "shards",
+    "probability": 1,
+    "count": 4,
+    "addMaxCount": 6
+   },
+   {
+    "type": "gold",
+    "probability": 1,
+    "count": 263,
+    "addMaxCount": 474
+   }
+  ],
+  "questTags": [
+   "ArchidektVault",
+   "Vault_lutscherdieb",
+   "VaultFloor1"
+  ]
+ },
+ {
+  "name": "lutscherdieb_xenagos_fatties",
+  "nameOverride": "Xenagos - Fatties",
+  "sprite": "sprites/enemy/fey/satyr_2.atlas",
+  "deck": [
+   "decks/lutscherdieb/xenagos_fatties.dck"
+  ],
+  "ai": "",
+  "spawnRate": 0,
+  "difficulty": 0.3,
+  "speed": 26,
+  "life": 28,
+  "colors": "RG",
+  "rewards": [
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Common"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "shards",
+    "probability": 1,
+    "count": 4,
+    "addMaxCount": 6
+   },
+   {
+    "type": "gold",
+    "probability": 1,
+    "count": 266,
+    "addMaxCount": 480
+   }
+  ],
+  "questTags": [
+   "ArchidektVault",
+   "Vault_lutscherdieb",
+   "VaultFloor1"
+  ]
+ },
+ {
+  "name": "lutscherdieb_copy_of_maha",
+  "nameOverride": "Copy of - Maha",
+  "sprite": "sprites/enemy/beast/bird/owl.atlas",
+  "deck": [
+   "decks/lutscherdieb/copy_of_maha.dck"
+  ],
+  "ai": "",
+  "spawnRate": 0,
+  "difficulty": 0.34,
+  "speed": 25,
+  "life": 29,
+  "colors": "B",
+  "rewards": [
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Common"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "shards",
+    "probability": 1,
+    "count": 4,
+    "addMaxCount": 6
+   },
+   {
+    "type": "gold",
+    "probability": 1,
+    "count": 291,
+    "addMaxCount": 524
+   }
+  ],
+  "questTags": [
+   "ArchidektVault",
+   "Vault_lutscherdieb",
+   "VaultFloor2"
+  ]
+ },
+ {
+  "name": "lutscherdieb_kaervek_crimes_graveyard_recursion_black_spells",
+  "nameOverride": "Kaervek - Crimes / Graveyard Recursion / Black Spells",
+  "sprite": "sprites/enemy/humanoid/human/warlock/witchlarge.atlas",
+  "deck": [
+   "decks/lutscherdieb/kaervek_crimes_graveyard_recursion_black_spells.dck"
+  ],
+  "ai": "",
+  "spawnRate": 0,
+  "difficulty": 0.364,
+  "speed": 25,
+  "life": 30,
+  "colors": "B",
+  "rewards": [
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Common"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "shards",
+    "probability": 1,
+    "count": 4,
+    "addMaxCount": 7
+   },
+   {
+    "type": "gold",
+    "probability": 1,
+    "count": 306,
+    "addMaxCount": 550
+   }
+  ],
+  "questTags": [
+   "ArchidektVault",
+   "Vault_lutscherdieb",
+   "VaultFloor2"
+  ]
+ },
+ {
+  "name": "lutscherdieb_kilo_artifact_proliferate",
+  "nameOverride": "Kilo - Artifact / Proliferate",
+  "sprite": "sprites/enemy/construct/golem_4.atlas",
+  "deck": [
+   "decks/lutscherdieb/kilo_artifact_proliferate.dck"
+  ],
+  "ai": "",
+  "spawnRate": 0,
+  "difficulty": 0.368,
+  "speed": 28,
+  "life": 30,
+  "colors": "WUR",
+  "rewards": [
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Common"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "shards",
+    "probability": 1,
+    "count": 4,
+    "addMaxCount": 7
+   },
+   {
+    "type": "gold",
+    "probability": 1,
+    "count": 308,
+    "addMaxCount": 555
+   }
+  ],
+  "questTags": [
+   "ArchidektVault",
+   "Vault_lutscherdieb",
+   "VaultFloor2"
+  ]
+ },
+ {
+  "name": "lutscherdieb_kodama_modify_landfall",
+  "nameOverride": "Kodama - Modify/Landfall",
+  "sprite": "sprites/enemy/undead/ghost_2.atlas",
+  "deck": [
+   "decks/lutscherdieb/kodama_modify_landfall.dck"
+  ],
+  "ai": "",
+  "spawnRate": 0,
+  "difficulty": 0.393,
+  "speed": 27,
+  "life": 31,
+  "colors": "G",
+  "rewards": [
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Common"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "shards",
+    "probability": 1,
+    "count": 4,
+    "addMaxCount": 7
+   },
+   {
+    "type": "gold",
+    "probability": 1,
+    "count": 324,
+    "addMaxCount": 582
+   }
+  ],
+  "questTags": [
+   "ArchidektVault",
+   "Vault_lutscherdieb",
+   "VaultFloor2"
+  ]
+ },
+ {
+  "name": "lutscherdieb_taii_redirect_loop",
+  "nameOverride": "Taii - Redirect Loop",
+  "sprite": "sprites/enemy/humanoid/elf/hunter_2.atlas",
+  "deck": [
+   "decks/lutscherdieb/taii_redirect_loop.dck"
+  ],
+  "ai": "",
+  "spawnRate": 0,
+  "difficulty": 0.412,
+  "speed": 30,
+  "life": 31,
+  "colors": "WR",
+  "rewards": [
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Common"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "shards",
+    "probability": 1,
+    "count": 4,
+    "addMaxCount": 7
+   },
+   {
+    "type": "gold",
+    "probability": 1,
+    "count": 335,
+    "addMaxCount": 603
+   }
+  ],
+  "questTags": [
+   "ArchidektVault",
+   "Vault_lutscherdieb",
+   "VaultFloor2"
+  ]
+ },
+ {
+  "name": "lutscherdieb_delney_small_stuff_etb",
+  "nameOverride": "Delney - Small Stuff / ETB",
+  "sprite": "sprites/enemy/humanoid/human/cleric/monk_2.atlas",
+  "deck": [
+   "decks/lutscherdieb/delney_small_stuff_etb.dck"
+  ],
+  "ai": "",
+  "spawnRate": 0,
+  "difficulty": 0.413,
+  "speed": 30,
+  "life": 31,
+  "colors": "W",
+  "rewards": [
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Common"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "shards",
+    "probability": 1,
+    "count": 4,
+    "addMaxCount": 7
+   },
+   {
+    "type": "gold",
+    "probability": 1,
+    "count": 336,
+    "addMaxCount": 604
+   }
+  ],
+  "questTags": [
+   "ArchidektVault",
+   "Vault_lutscherdieb",
+   "VaultFloor2"
+  ]
+ },
+ {
+  "name": "lutscherdieb_mister_fantastic_populate_copy_token_triggered_abilities",
+  "nameOverride": "Mister Fantastic- Populate/Copy Token/Triggered Abilities",
+  "sprite": "sprites/enemy/humanoid/human/artificer/esper_artificer.atlas",
+  "deck": [
+   "decks/lutscherdieb/mister_fantastic_populate_copy_token_triggered_abilities.dck"
+  ],
+  "ai": "",
+  "spawnRate": 0,
+  "difficulty": 0.436,
+  "speed": 28,
+  "life": 32,
+  "colors": "WURG",
+  "rewards": [
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Common"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "shards",
+    "probability": 1,
+    "count": 5,
+    "addMaxCount": 7
+   },
+   {
+    "type": "gold",
+    "probability": 1,
+    "count": 350,
+    "addMaxCount": 630
+   }
+  ],
+  "questTags": [
+   "ArchidektVault",
+   "Vault_lutscherdieb",
+   "VaultFloor2"
+  ]
+ },
+ {
+  "name": "lutscherdieb_ashling_elemental_etb_reanimate",
+  "nameOverride": "Ashling - Elemental/ETB/Reanimate",
+  "sprite": "sprites/enemy/elemental/magmaelemental.atlas",
+  "deck": [
+   "decks/lutscherdieb/ashling_elemental_etb_reanimate.dck"
+  ],
+  "ai": "",
+  "spawnRate": 0,
+  "difficulty": 0.437,
+  "speed": 26,
+  "life": 32,
+  "colors": "WUBRG",
+  "rewards": [
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Common"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "shards",
+    "probability": 1,
+    "count": 5,
+    "addMaxCount": 7
+   },
+   {
+    "type": "gold",
+    "probability": 1,
+    "count": 351,
+    "addMaxCount": 631
+   }
+  ],
+  "questTags": [
+   "ArchidektVault",
+   "Vault_lutscherdieb",
+   "VaultFloor3"
+  ]
+ },
+ {
+  "name": "lutscherdieb_copy_of_sidar_jabari_knights",
+  "nameOverride": "Copy of - Sidar Jabari | Knights",
+  "sprite": "sprites/enemy/monstrosity/griffin_2.atlas",
+  "deck": [
+   "decks/lutscherdieb/copy_of_sidar_jabari_knights.dck"
+  ],
+  "ai": "",
+  "spawnRate": 0,
+  "difficulty": 0.446,
+  "speed": 31,
+  "life": 32,
+  "colors": "WUB",
+  "rewards": [
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Common"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "shards",
+    "probability": 1,
+    "count": 5,
+    "addMaxCount": 7
+   },
+   {
+    "type": "gold",
+    "probability": 1,
+    "count": 357,
+    "addMaxCount": 641
+   }
+  ],
+  "questTags": [
+   "ArchidektVault",
+   "Vault_lutscherdieb",
+   "VaultFloor3"
+  ]
+ },
+ {
+  "name": "lutscherdieb_atraxa_blink",
+  "nameOverride": "Atraxa - Blink",
+  "sprite": "sprites/enemy/aberration/phyrexian/phyrexianangel.atlas",
+  "deck": [
+   "decks/lutscherdieb/atraxa_blink.dck"
+  ],
+  "ai": "",
+  "spawnRate": 0,
+  "difficulty": 0.466,
+  "speed": 32,
+  "life": 33,
+  "colors": "WUBG",
+  "rewards": [
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Common"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "shards",
+    "probability": 1,
+    "count": 5,
+    "addMaxCount": 8
+   },
+   {
+    "type": "gold",
+    "probability": 1,
+    "count": 369,
+    "addMaxCount": 663
+   },
+   {
+    "type": "card",
+    "probability": 0.6,
+    "count": 2,
+    "rarity": [
+     "Rare",
+     "Mythic Rare"
+    ],
+    "colors": [
+     "White",
+     "Blue",
+     "Black",
+     "Green"
+    ]
+   }
+  ],
+  "questTags": [
+   "ArchidektVault",
+   "Vault_lutscherdieb",
+   "VaultFloor3"
+  ]
+ },
+ {
+  "name": "lutscherdieb_zurzoth_burn_group_draw",
+  "nameOverride": "Zurzoth - Burn / Group Draw",
+  "sprite": "sprites/enemy/fiend/juggler_2.atlas",
+  "deck": [
+   "decks/lutscherdieb/zurzoth_burn_group_draw.dck"
+  ],
+  "ai": "",
+  "spawnRate": 0,
+  "difficulty": 0.508,
+  "speed": 30,
+  "life": 34,
+  "colors": "R",
+  "rewards": [
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Common"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "shards",
+    "probability": 1,
+    "count": 5,
+    "addMaxCount": 8
+   },
+   {
+    "type": "gold",
+    "probability": 1,
+    "count": 395,
+    "addMaxCount": 709
+   },
+   {
+    "type": "card",
+    "probability": 0.6,
+    "count": 2,
+    "rarity": [
+     "Rare",
+     "Mythic Rare"
+    ],
+    "colors": [
+     "Red"
+    ]
+   }
+  ],
+  "questTags": [
+   "ArchidektVault",
+   "Vault_lutscherdieb",
+   "VaultFloor3"
+  ]
+ },
+ {
+  "name": "lutscherdieb_bane_ondeath_etb_the_spirit_dragons",
+  "nameOverride": "Bane - OnDeath / ETB - The Spirit Dragons",
+  "sprite": "sprites/enemy/giant/godlytitan.atlas",
+  "deck": [
+   "decks/lutscherdieb/bane_ondeath_etb_the_spirit_dragons.dck"
+  ],
+  "ai": "",
+  "spawnRate": 0,
+  "difficulty": 0.511,
+  "speed": 31,
+  "life": 34,
+  "colors": "WUB",
+  "rewards": [
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Common"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "shards",
+    "probability": 1,
+    "count": 5,
+    "addMaxCount": 8
+   },
+   {
+    "type": "gold",
+    "probability": 1,
+    "count": 397,
+    "addMaxCount": 712
+   },
+   {
+    "type": "card",
+    "probability": 0.6,
+    "count": 2,
+    "rarity": [
+     "Rare",
+     "Mythic Rare"
+    ],
+    "colors": [
+     "White",
+     "Blue",
+     "Black"
+    ]
+   }
+  ],
+  "questTags": [
+   "ArchidektVault",
+   "Vault_lutscherdieb",
+   "VaultFloor3"
+  ]
+ },
+ {
+  "name": "lutscherdieb_derevi_tap_effects_mass_creatures",
+  "nameOverride": "Derevi - Tap Effects / Mass Creatures",
+  "sprite": "sprites/enemy/humanoid/aven/falconheadedaven.atlas",
+  "deck": [
+   "decks/lutscherdieb/derevi_tap_effects_mass_creatures.dck"
+  ],
+  "ai": "",
+  "spawnRate": 0,
+  "difficulty": 0.666,
+  "speed": 30,
+  "life": 39,
+  "colors": "WUG",
+  "rewards": [
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Common"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "type": "shards",
+    "probability": 1,
+    "count": 6,
+    "addMaxCount": 10
+   },
+   {
+    "type": "gold",
+    "probability": 1,
+    "count": 493,
+    "addMaxCount": 883
+   },
+   {
+    "type": "card",
+    "probability": 0.6,
+    "count": 2,
+    "rarity": [
+     "Rare",
+     "Mythic Rare"
+    ],
+    "colors": [
+     "White",
+     "Blue",
+     "Green"
+    ]
+   }
+  ],
+  "questTags": [
+   "ArchidektVault",
+   "Vault_lutscherdieb",
+   "VaultFloor3"
+  ]
+ },
+ {
+  "name": "lutscherdieb_kess_wheel",
+  "nameOverride": "Kess - Wheel",
+  "sprite": "sprites/enemy/humanoid/human/cleric/cleric_orzhov.atlas",
+  "deck": [
+   "decks/lutscherdieb/kess_wheel.dck"
+  ],
+  "ai": "",
+  "spawnRate": 0,
+  "difficulty": 0.904,
+  "speed": 33,
+  "life": 47,
+  "colors": "UBR",
+  "rewards": [
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Common"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Common"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Uncommon"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Rare"
+    ],
+    "manaCosts": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     3,
+     4
+    ]
+   },
+   {
+    "type": "deckCard",
+    "probability": 1,
+    "count": 1,
+    "rarity": [
+     "Mythic Rare"
+    ],
+    "manaCosts": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "type": "shards",
+    "probability": 1,
+    "count": 7,
+    "addMaxCount": 12
+   },
+   {
+    "type": "gold",
+    "probability": 1,
+    "count": 640,
+    "addMaxCount": 1144
+   },
+   {
+    "type": "card",
+    "probability": 0.6,
+    "count": 3,
+    "rarity": [
+     "Rare",
+     "Mythic Rare"
+    ],
+    "colors": [
+     "Blue",
+     "Black",
+     "Red"
+    ]
+   }
+  ],
+  "questTags": [
+   "ArchidektVault",
+   "Vault_lutscherdieb",
+   "VaultFloor3"
+  ],
+  "boss": true,
+  "gamesPerMatch": 3
+ }
+]

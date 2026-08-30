@@ -7,7 +7,7 @@
       }
     }
   },
-  "enabledPlugins": [
-    "base@claudebase"
-  ]
+  "enabledPlugins": {
+    "base@claudebase": true
+  }
 }

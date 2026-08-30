@@ -24,6 +24,7 @@ THREE OUTCOMES, and the distinction is the point:
 Exit code: 0 when nothing FAILed, 1 otherwise. BLOCKED and TODO do not fail the
 run - they are machine and roadmap state, not content defects.
 """
+import base64
 import io
 import json
 import os
@@ -31,6 +32,7 @@ import re
 import subprocess
 import sys
 import zipfile
+import zlib
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import _common as C  # noqa: E402
@@ -289,10 +291,18 @@ def check_decks(plane):
 # check 4 - equipment names and item icons
 # --------------------------------------------------------------------------
 def check_items(plane):
-    items, _ = load_plane_json(plane, "world/items.json")
+    items, items_origin = load_plane_json(plane, "world/items.json")
     enemies, _ = load_plane_json(plane, "world/enemies.json")
     if items is None:
         emit("BLOCKED", "equipment-resolve", "%s: no items.json in plane or common" % plane)
+        return
+    if items_origin != "plane":
+        # Linting the common fallback means reporting stock defects this repo
+        # cannot fix, on every run, for every plane. A linter whose output is
+        # mostly noise about someone else's files is a linter people stop
+        # reading - so only plane-owned item data is judged here.
+        emit("PASS", "equipment-resolve",
+             "%s: uses common's items.json unchanged - not linted" % plane)
         return
     item_names = {(i or {}).get("name") for i in (items if isinstance(items, list) else [])}
     bad = 0
@@ -323,9 +333,13 @@ def check_items(plane):
 # check 5 - startBattleWithCard* names resolve
 # --------------------------------------------------------------------------
 def check_battle_cards(plane):
-    items, _ = load_plane_json(plane, "world/items.json")
+    items, items_origin = load_plane_json(plane, "world/items.json")
     if items is None:
         emit("BLOCKED", "battle-card-resolve", "%s: no items.json" % plane)
+        return
+    if items_origin != "plane":
+        emit("PASS", "battle-card-resolve",
+             "%s: uses common's items.json unchanged - not linted" % plane)
         return
     known = stock_card_names() | custom_card_names(plane)
     if not known:
@@ -359,10 +373,18 @@ def check_ownership(plane):
         return
     try:
         with io.open(os.path.join(C.REPO, "OWNERSHIP.md"), encoding="utf-8") as f:
-            ledger = f.read()
+            ledger_text = f.read()
     except OSError:
         emit("FAIL", "ownership-ledger", "OWNERSHIP.md is missing")
         return
+    # Match ONLY real table rows, never prose or the row template.
+    #
+    # The template comment in OWNERSHIP.md uses `world/enemies.json` as its
+    # worked example. A plain substring search over the whole file therefore
+    # reports the single most likely fork in this project as already recorded,
+    # which is the exact failure this check exists to prevent.
+    ledger_text = re.sub(r"<!--.*?-->", "", ledger_text, flags=re.S)
+    ledger = "\n".join(ln for ln in ledger_text.splitlines() if ln.lstrip().startswith("|"))
     # Files that cannot fall back must be shipped per-plane and are not forks.
     MANDATORY = ("world/world.json", "world/quests.json", "world/shops.json")
     plane_root = os.path.join(C.REPO, "planes", plane)
@@ -436,15 +458,720 @@ def check_prereqs():
         emit("BLOCKED", "binding:engine-workspace", "not bootstrapped")
 
 
+# --------------------------------------------------------------------------
+# checks 6-9 - the map/enemy/POI wiring a dungeon plane depends on
+#
+# Every failure mode below is SILENT in Forge. A mistyped enemy name spawns a
+# random biome enemy instead (MapStage prints "Enemy %s not found, choosing a
+# random one for current biome" to stdout and carries on); a POI no biome names
+# is simply never placed; a 99-card commander deck just plays a card short.
+# --------------------------------------------------------------------------
+def adventure_path(plane, path):
+    """Resolve a path written the way Adventure JSON writes them.
+
+    Forge resolves '../<plane>/...' and '../common/...' against res/adventure.
+    In this repo planes/ plays the part of res/adventure and the common layer
+    is the bound read-only reference, so both forms are answerable here without
+    the install being deployed.
+    """
+    if not path:
+        return None
+    p = path.replace("\\", "/")
+    if not p.startswith("../"):
+        resolved, _origin = plane_file(plane, p)
+        return resolved
+    rel = p[3:]
+    head, _, tail = rel.partition("/")
+    if head == "common":
+        common = C.ref("forge-common")
+        cand = os.path.join(common, tail) if common else None
+        return cand if cand and os.path.exists(cand) else None
+    cand = os.path.join(C.REPO, "planes", head, tail)
+    if os.path.exists(cand):
+        return cand
+    root = C.install_root()
+    if root:
+        cand = os.path.join(root, "res", "adventure", head, tail)
+        if os.path.exists(cand):
+            return cand
+    return None
+
+
+def tmx_files(plane):
+    root = os.path.join(C.REPO, "planes", plane, "maps")
+    for dirpath, _d, filenames in os.walk(root):
+        for fn in sorted(filenames):
+            if fn.endswith(".tmx"):
+                yield os.path.join(dirpath, fn)
+
+
+def tmx_objects(path):
+    """(properties dict, template) for every <object> in a .tmx."""
+    try:
+        with io.open(path, encoding="utf-8", errors="replace") as f:
+            text = f.read()
+    except OSError:
+        return []
+    out = []
+    pattern = r"<object\b[^>]*?/>|<object\b[^>]*?>.*?</object>"
+    for m in re.finditer(pattern, text, re.S):
+        blob = m.group(0)
+        tpl = re.search(r'template="([^"]*)"', blob)
+        props = dict(re.findall(r'<property name="([^"]*)"[^>]*?value="([^"]*)"', blob))
+        for pm in re.finditer(r'<property name="([^"]*)"[^>]*?>(.*?)</property>', blob, re.S):
+            props.setdefault(pm.group(1), pm.group(2))
+        out.append((props, tpl.group(1) if tpl else None))
+    return out
+
+
+def check_map_enemies(plane):
+    """Every `enemy` a map names exists, and no map hands one enemy name two
+    different decks.
+
+    The second half is not paranoia. MapStage's deckOverride writes through to
+    the EnemyData held in WorldData's STATIC cache, which every sprite of that
+    name shares, so two overrides on one name in one map collapse onto the last
+    one applied - silently, for the rest of the session.
+    """
+    enemies, _ = load_plane_json(plane, "world/enemies.json")
+    if enemies is None:
+        emit("BLOCKED", "map-enemy-resolve", "%s: no enemies.json in plane or common" % plane)
+        return
+    known = {(e or {}).get("name") for e in (enemies if isinstance(enemies, list) else [])}
+    bad = checked = 0
+    for path in tmx_files(plane):
+        rel = os.path.relpath(path, C.REPO)
+        overrides = {}
+        for props, _tpl in tmx_objects(path):
+            name = props.get("enemy")
+            if not name:
+                continue
+            checked += 1
+            if name not in known:
+                bad += 1
+                emit("FAIL", "map-enemy-resolve",
+                     "%s: enemy %r is in no enemies.json - Forge substitutes a "
+                     "random biome enemy silently" % (rel, name))
+            ovr = props.get("deckOverride") or ""
+            if ovr:
+                overrides.setdefault(name, set()).add(ovr)
+        for name, decks in overrides.items():
+            if len(decks) > 1:
+                bad += 1
+                emit("FAIL", "map-enemy-resolve",
+                     "%s: enemy %r carries %d different deckOverride values in one "
+                     "map; they collapse onto the last one applied - give each deck "
+                     "its own enemies.json entry" % (rel, name, len(decks)))
+    if not bad:
+        emit("PASS", "map-enemy-resolve",
+             "%s: %d map enemy reference(s) resolve" % (plane, checked))
+
+
+def check_map_links(plane):
+    """Every teleport target, object template and tileset a map names exists."""
+    bad = checked = 0
+    for path in tmx_files(plane):
+        rel = os.path.relpath(path, C.REPO)
+        here = os.path.dirname(path)
+        for props, tpl in tmx_objects(path):
+            for ref_path in (tpl, props.get("teleport")):
+                if not ref_path:
+                    continue
+                checked += 1
+                cand = os.path.normpath(os.path.join(here, ref_path))
+                if os.path.exists(cand):
+                    continue
+                # Paths that climb out of planes/ land in the install's
+                # res/adventure; re-anchor them the way Forge would.
+                trimmed = ref_path
+                while trimmed.startswith("../"):
+                    trimmed = trimmed[3:]
+                if adventure_path(plane, "../" + trimmed):
+                    continue
+                bad += 1
+                emit("FAIL", "map-link-resolve", "%s: %r does not resolve" % (rel, ref_path))
+        try:
+            with io.open(path, encoding="utf-8", errors="replace") as f:
+                text = f.read()
+        except OSError:
+            text = ""
+        for src in re.findall(r'<tileset[^>]*source="([^"]*)"', text):
+            checked += 1
+            cand = os.path.normpath(os.path.join(here, src))
+            trimmed = src
+            while trimmed.startswith("../"):
+                trimmed = trimmed[3:]
+            if not os.path.exists(cand) and not adventure_path(plane, "../" + trimmed):
+                bad += 1
+                emit("FAIL", "map-link-resolve", "%s: tileset %r does not resolve" % (rel, src))
+    if not bad:
+        emit("PASS", "map-link-resolve",
+             "%s: %d map link(s) resolve" % (plane, checked))
+
+
+def check_tmx_contracts(plane):
+    """The two Tiled contracts whose breach is invisible in game.
+
+    spriteLayer: PointOfInterestMapRenderer walks the layers and calls
+    stage.draw(batch) only on the layer identical to MapStage.spriteLayer. With
+    no layer carrying spriteLayer=true nothing ever matches, so the player, the
+    enemies and the chests are never drawn - the tiles render perfectly and the
+    map looks empty and unplayable. Forge's only complaint is one line on
+    stderr, "Warning: No spriteLayer present in map."
+
+    Size: a map smaller than config.json's screenWidth x screenHeight leaves
+    the camera nothing to scroll against.
+    """
+    cfg, _origin = load_plane_json(plane, "config.json")
+    min_w = -(-(cfg or {}).get("screenWidth", 480) // 16)
+    min_h = -(-(cfg or {}).get("screenHeight", 270) // 16)
+    bad = checked = 0
+    for path in tmx_files(plane):
+        rel = os.path.relpath(path, C.REPO)
+        checked += 1
+        try:
+            with io.open(path, encoding="utf-8", errors="replace") as f:
+                text = f.read()
+        except OSError:
+            continue
+        n_sprite = len(re.findall(
+            r'<property name="spriteLayer"[^>]*value="true"', text))
+        if n_sprite != 1:
+            bad += 1
+            emit("FAIL", "tmx-contracts",
+                 "%s: %d layer(s) carry spriteLayer=true, needs exactly 1 - with "
+                 "none, the player and every enemy are silently never drawn"
+                 % (rel, n_sprite))
+        n_objgroups = len(re.findall(r"<objectgroup\b", text))
+        if n_objgroups != 1:
+            bad += 1
+            emit("FAIL", "tmx-contracts",
+                 "%s: %d object layer(s), needs exactly 1" % (rel, n_objgroups))
+        m = re.search(r'\bwidth="(\d+)" height="(\d+)" tilewidth="(\d+)" tileheight="(\d+)"',
+                      text)
+        if not m:
+            bad += 1
+            emit("FAIL", "tmx-contracts", "%s: no readable map header" % rel)
+            continue
+        w, h, tw, th = (int(g) for g in m.groups())
+        if (tw, th) != (16, 16):
+            bad += 1
+            emit("FAIL", "tmx-contracts", "%s: %dx%d tiles, Adventure needs 16x16"
+                 % (rel, tw, th))
+        if w < min_w or h < min_h:
+            bad += 1
+            emit("FAIL", "tmx-contracts",
+                 "%s: %dx%d tiles is smaller than the %dx%d viewport" % (rel, w, h, min_w, min_h))
+    if not bad:
+        emit("PASS", "tmx-contracts", "%s: %d map(s) satisfy the Tiled contracts" % (plane, checked))
+
+
+def tmx_tile_grid(path, layer_name):
+    """(width, height, [gid]) for one base64+zlib tile layer, or (0, 0, [])."""
+    try:
+        with io.open(path, encoding="utf-8", errors="replace") as f:
+            text = f.read()
+    except OSError:
+        return 0, 0, []
+    m = re.search(r'\bwidth="(\d+)" height="(\d+)" tilewidth=', text)
+    if not m:
+        return 0, 0, []
+    w, h = int(m.group(1)), int(m.group(2))
+    lm = re.search(r'<layer[^>]*name="%s"[^>]*>(?:\s*<properties>.*?</properties>)?'
+                   r'\s*<data encoding="base64" compression="zlib">(.*?)</data>'
+                   % re.escape(layer_name), text, re.S)
+    if not lm:
+        return w, h, []
+    try:
+        raw = zlib.decompress(base64.b64decode(lm.group(1).strip()))
+    except (ValueError, zlib.error):
+        return w, h, []
+    gids = [int.from_bytes(raw[i * 4:i * 4 + 4], "little") for i in range(w * h)]
+    return w, h, gids
+
+
+def check_entry_spawns(plane):
+    """Where each `entry` object actually drops the player, and whether a
+    dungeon can be left again.
+
+    `direction` names the side the entry FACES; the player is placed on the
+    OPPOSITE side. EntryActor.spawn() is explicit - "left" does
+    setPosition(x + w, ...) and "right" does setPosition(x - playerWidth, ...).
+    The shipped Adventure doc says the reverse ("up means the player will be
+    teleported to the upper edge"), so reading the doc rather than the bytecode
+    puts the player one tile the wrong way, which at a map edge means inside
+    the border wall: alive, rendered, and unable to move.
+    """
+    # Player lands on the side OPPOSITE the one `direction` names.
+    OFFSET = {"left": (1, 0), "right": (-1, 0), "up": (0, -1), "down": (0, 1)}
+    bad = checked = 0
+    for path in tmx_files(plane):
+        rel = os.path.relpath(path, C.REPO).replace("\\", "/")
+        w, h, ground = tmx_tile_grid(path, "Ground")
+        try:
+            with io.open(path, encoding="utf-8", errors="replace") as f:
+                text = f.read()
+        except OSError:
+            continue
+        exits = 0
+        for om in re.finditer(r'<object id="(\d+)"[^>]*template="([^"]*)"[^>]*'
+                              r'x="([\d.]+)" y="([\d.]+)"[^>]*>(.*?)</object>',
+                              text, re.S):
+            oid, tpl, x, y, body = om.groups()
+            if "entry" not in tpl:
+                continue
+            checked += 1
+            dm = re.search(r'<property name="direction"[^>]*value="([^"]*)"', body)
+            direction = dm.group(1) if dm else ""
+            tm = re.search(r'<property name="teleport"[^>]*value="([^"]*)"', body)
+            if not (tm.group(1).strip() if tm else ""):
+                exits += 1
+            if not ground:
+                continue
+            dx, dy = OFFSET.get(direction, (0, 0))
+            col = int(float(x) // 16) + dx
+            row = int(float(y) // 16) - 1 + dy
+            if not (0 <= col < w and 0 <= row < h):
+                bad += 1
+                emit("FAIL", "entry-spawn",
+                     "%s: entry %s spawns the player outside the map at (%d,%d)"
+                     % (rel, oid, col, row))
+            elif ground[row * w + col]:
+                bad += 1
+                emit("FAIL", "entry-spawn",
+                     "%s: entry %s (direction=%r) spawns the player into a solid tile "
+                     "at (%d,%d) - they arrive stuck inside the wall"
+                     % (rel, oid, direction, col, row))
+        if exits == 0 and rel.endswith("_f1.tmx"):
+            bad += 1
+            emit("FAIL", "entry-spawn",
+                 "%s: no entry with an empty teleport - the player cannot leave "
+                 "the dungeon" % rel)
+    if not bad:
+        emit("PASS", "entry-spawn",
+             "%s: %d entry object(s) land the player on open ground" % (plane, checked))
+
+
+def tileset_collision(plane, tmx_path):
+    """{local tile id -> True} for tiles that carry collision shapes, keyed by
+    the GID offset the map declares. Returns {} when the tileset cannot be read."""
+    try:
+        with io.open(tmx_path, encoding="utf-8", errors="replace") as f:
+            text = f.read()
+    except OSError:
+        return {}
+    out = {}
+    for firstgid, src in re.findall(r'<tileset firstgid="(\d+)" source="([^"]*)"', text):
+        trimmed = src
+        while trimmed.startswith("../"):
+            trimmed = trimmed[3:]
+        path = adventure_path(plane, "../" + trimmed)
+        if not path:
+            continue
+        try:
+            with io.open(path, encoding="utf-8", errors="replace") as f:
+                tsx = f.read()
+        except OSError:
+            continue
+        base = int(firstgid)
+        for m in re.finditer(r'<tile id="(\d+)"[^>]*>(.*?)</tile>', tsx, re.S):
+            out[base + int(m.group(1))] = "<objectgroup" in m.group(2)
+    return out
+
+
+def check_tile_collision(plane):
+    """Floors must not collide and walls must.
+
+    Both mistakes are invisible until you walk into them: a colliding tile in
+    the Background layer seals a room the linter otherwise calls perfect, and a
+    collision-free tile in the Ground layer is a wall you can stroll through.
+    MapStage calls loadCollision() on EVERY tile layer, so which layer a tile is
+    in decides nothing - only its shapes in the tileset do.
+    """
+    bad = checked = 0
+    for path in tmx_files(plane):
+        rel = os.path.relpath(path, C.REPO).replace("\\", "/")
+        collides = tileset_collision(plane, path)
+        if not collides:
+            emit("BLOCKED", "tile-collision", "%s: tileset not resolvable" % rel)
+            return
+        for layer, want in (("Background", False), ("Ground", True)):
+            w, _h, gids = tmx_tile_grid(path, layer)
+            if not gids:
+                continue
+            for gid in sorted({g for g in gids if g}):
+                checked += 1
+                if collides.get(gid, False) != want:
+                    bad += 1
+                    emit("FAIL", "tile-collision",
+                         "%s: %s layer uses gid %d which %s collision - a %s tile "
+                         "there %s" % (rel, layer, gid,
+                                       "has" if not want else "has no",
+                                       "solid" if not want else "walkable",
+                                       "seals the room" if not want
+                                       else "is a wall you can walk through"))
+    if not bad:
+        emit("PASS", "tile-collision",
+             "%s: %d distinct tile id(s) sit in the right layer" % (plane, checked))
+
+
+def check_reachability(plane):
+    """Every object on a floor must be walkable-to from where the player lands.
+
+    Carving rooms and corridors procedurally makes it easy to seal one off by a
+    tile. Forge will happily load that map; the roamer and its treasure simply
+    never happen.
+    """
+    OFFSET = {"left": (1, 0), "right": (-1, 0), "up": (0, -1), "down": (0, 1)}
+    bad = checked = 0
+    for path in tmx_files(plane):
+        rel = os.path.relpath(path, C.REPO).replace("\\", "/")
+        w, h, ground = tmx_tile_grid(path, "Ground")
+        if not ground:
+            continue
+        try:
+            with io.open(path, encoding="utf-8", errors="replace") as f:
+                text = f.read()
+        except OSError:
+            continue
+        start, targets = None, []
+        for om in re.finditer(r'<object id="(\d+)"[^>]*template="([^"]*)"[^>]*'
+                              r'x="([\d.]+)" y="([\d.]+)"[^>]*?(?:/>|>(.*?)</object>)',
+                              text, re.S):
+            oid, tpl, x, y, body = om.group(1), om.group(2), om.group(3), om.group(4), om.group(5) or ""
+            col, row = int(float(x) // 16), int(float(y) // 16) - 1
+            if "entry" in tpl:
+                dm = re.search(r'<property name="direction"[^>]*value="([^"]*)"', body)
+                dx, dy = OFFSET.get(dm.group(1) if dm else "", (0, 0))
+                tm = re.search(r'<property name="teleport"[^>]*value="([^"]*)"', body)
+                if start is None or not (tm.group(1).strip() if tm else ""):
+                    start = (col + dx, row + dy)
+            targets.append((oid, os.path.basename(tpl), col, row))
+        if start is None:
+            continue
+        seen = set()
+        stack = [start]
+        while stack:
+            c, r = stack.pop()
+            if (c, r) in seen or not (0 <= c < w and 0 <= r < h):
+                continue
+            if ground[r * w + c]:
+                continue
+            seen.add((c, r))
+            stack += [(c + 1, r), (c - 1, r), (c, r + 1), (c, r - 1)]
+        for oid, tpl, col, row in targets:
+            checked += 1
+            if (col, row) not in seen:
+                bad += 1
+                emit("FAIL", "map-reachability",
+                     "%s: %s object %s at (%d,%d) cannot be walked to from the "
+                     "player's landing cell" % (rel, tpl, oid, col, row))
+    if not bad:
+        emit("PASS", "map-reachability",
+             "%s: %d map object(s) are reachable" % (plane, checked))
+
+
+# forge.card.CardRarity, one of the engine's closed sets: an unrecognised name
+# does not error, smartValueOf() returns Unknown and the filter then matches
+# nothing, so the reward silently disappears.
+FORGE_RARITIES = {"basicland", "basic land", "common", "uncommon", "rare",
+                  "mythicrare", "mythic rare", "special", "token", "unknown"}
+
+
+def check_reward_duplicates(plane):
+    """Deck-card hauls must be unable to hand out the same card twice.
+
+    CardUtil.generateCards() draws WITH REPLACEMENT - it loops `count` times
+    over filtered.get(rand.nextInt(size)) and never removes what it drew - and
+    there is no data field to change that. The only way to guarantee distinct
+    cards is one draw per entry across mutually exclusive filters, so that is
+    what this check enforces:
+
+      * every `deckCard` entry draws exactly once (count 1, no addMaxCount), and
+      * no two of an enemy's `deckCard` entries can match the same card, which
+        means their rarity sets and mana-cost sets must not both overlap.
+
+    It also rejects a rarity string CardRarity.smartValueOf() would not know,
+    because that turns into Unknown and the reward quietly vanishes.
+    """
+    enemies, origin = load_plane_json(plane, "world/enemies.json")
+    if enemies is None:
+        emit("BLOCKED", "reward-no-duplicates", "%s: no enemies.json" % plane)
+        return
+    if origin != "plane":
+        emit("PASS", "reward-no-duplicates", "%s: uses common's enemies unchanged" % plane)
+        return
+    bad = checked = 0
+    for entry in enemies if isinstance(enemies, list) else []:
+        entry = entry or {}
+        name = entry.get("name", "?")
+        buckets = []
+        for rw in entry.get("rewards", []) or []:
+            for rarity in (rw or {}).get("rarity", []) or []:
+                if str(rarity).lower() not in FORGE_RARITIES:
+                    bad += 1
+                    emit("FAIL", "reward-no-duplicates",
+                         "%s: enemy %r reward rarity %r is not a CardRarity - "
+                         "smartValueOf returns Unknown and the reward vanishes"
+                         % (plane, name, rarity))
+            if (rw or {}).get("type") != "deckCard":
+                continue
+            checked += 1
+            if rw.get("count", 1) != 1 or rw.get("addMaxCount"):
+                bad += 1
+                emit("FAIL", "reward-no-duplicates",
+                     "%s: enemy %r has a deckCard entry drawing %d+%d times - the "
+                     "engine draws with replacement, so it can repeat a card"
+                     % (plane, name, rw.get("count", 1), rw.get("addMaxCount", 0)))
+            buckets.append((frozenset(str(r).lower() for r in (rw.get("rarity") or [])),
+                            frozenset(rw.get("manaCosts") or [])))
+        for i in range(len(buckets)):
+            for j in range(i + 1, len(buckets)):
+                (r1, m1), (r2, m2) = buckets[i], buckets[j]
+                r_overlap = (not r1) or (not r2) or (r1 & r2)
+                m_overlap = (not m1) or (not m2) or (m1 & m2)
+                if r_overlap and m_overlap:
+                    bad += 1
+                    emit("FAIL", "reward-no-duplicates",
+                         "%s: enemy %r has two deckCard buckets that can match the "
+                         "same card (rarity %s vs %s, cmc %s vs %s)"
+                         % (plane, name, sorted(r1) or "any", sorted(r2) or "any",
+                            sorted(m1) or "any", sorted(m2) or "any"))
+    if not bad:
+        emit("PASS", "reward-no-duplicates",
+             "%s: %d deck-card bucket(s) are single-draw and mutually exclusive"
+             % (plane, checked))
+
+
+def check_commander_mode_config(plane):
+    """A plane shipping [Commander] decks must be able to run them.
+
+    `DuelScene` picks GameType.Commander only when AdventurePlayer
+    .isCommanderMode() is true, which needs the save to be in the Commander /
+    CommanderPrecon mode or the plane's chaosDeckFormat to be "Commander".
+    Otherwise the format is GameType.Adventure, DeckFormat.Adventure
+    .hasCommander() is false, and every [Commander] section in the plane is
+    silently ignored - the enemy just plays 99 cards and no commander.
+    """
+    deck_root = os.path.join(C.REPO, "planes", plane, "decks")
+    has_commander_decks = False
+    for dirpath, _d, filenames in os.walk(deck_root):
+        for fn in filenames:
+            if not fn.endswith(".dck"):
+                continue
+            try:
+                with io.open(os.path.join(dirpath, fn), encoding="utf-8",
+                             errors="replace") as f:
+                    if "[commander]" in f.read().lower():
+                        has_commander_decks = True
+            except OSError:
+                pass
+    if not has_commander_decks:
+        emit("PASS", "commander-mode-config", "%s: no commander decks to run" % plane)
+        return
+    cfg, origin = load_plane_json(plane, "config.json")
+    if cfg is None:
+        emit("FAIL", "commander-mode-config",
+             "%s: ships [Commander] decks but has no config.json - it inherits "
+             "common's, which offers no Commander mode" % plane)
+        return
+    if origin != "plane":
+        emit("FAIL", "commander-mode-config",
+             "%s: ships [Commander] decks but uses common's config.json, which "
+             "offers no Commander mode" % plane)
+        return
+    bad = 0
+    difficulties = cfg.get("difficulties") or []
+    missing = [d.get("name", "?") for d in difficulties if not d.get("commanderDecks")]
+    if missing:
+        bad += 1
+        emit("FAIL", "commander-mode-config",
+             "%s: difficulty %s has no commanderDecks - a save started there "
+             "runs GameType.Adventure and ignores every [Commander] section"
+             % (plane, ", ".join(missing)))
+    if str(cfg.get("chaosDeckFormat", "")).lower() != "commander":
+        bad += 1
+        emit("FAIL", "commander-mode-config",
+             '%s: chaosDeckFormat is %r, not "Commander" - the Chaos mode would '
+             "run these decks without commanders" % (plane, cfg.get("chaosDeckFormat")))
+    if cfg.get("minDeckSize", 0) < 98:
+        bad += 1
+        emit("FAIL", "commander-mode-config",
+             "%s: minDeckSize is %s; a commander plane needs 98 or the player's "
+             "own deck is trimmed against the wrong floor"
+             % (plane, cfg.get("minDeckSize")))
+    if not bad:
+        emit("PASS", "commander-mode-config",
+             "%s: %d difficulty setting(s) offer Commander mode" % (plane, len(difficulties)))
+
+
+def check_biome_enemies(plane):
+    """A biome must OMIT `enemies` rather than set it to [].
+
+    BiomeData.getEnemyList() copies EVERY enemy in enemies.json into the biome's
+    list with spawnRate forced to 0, and only the names in `enemies` keep their
+    real rate. BiomeData.getEnemy(rank) then filters by difficulty <= rank and,
+    when that filter comes up empty, falls back to Aggregates.random over the
+    WHOLE list - ignoring spawnRate entirely. So `"enemies": []` does not mean
+    "no overworld enemies", it means "spawn any enemy in the plane, including
+    the ones marked spawnRate 0".
+
+    Omitting the key leaves the field null, which makes getEnemyList() return
+    an empty list, Aggregates.random return null, and WorldStage.spawn(null)
+    return false without spawning.
+    """
+    world, _ = load_plane_json(plane, "world/world.json")
+    if world is None:
+        emit("BLOCKED", "biome-enemy-list", "%s: no world.json" % plane)
+        return
+    bad = checked = 0
+    for biome_rel in (world.get("biomesNames") or []):
+        path, origin = plane_file(plane, biome_rel)
+        if origin != "plane":
+            continue
+        checked += 1
+        try:
+            with io.open(path, encoding="utf-8") as f:
+                raw = json.load(f)
+        except (OSError, ValueError):
+            continue
+        if "enemies" in raw and not raw["enemies"]:
+            bad += 1
+            emit("FAIL", "biome-enemy-list",
+                 "%s: %s sets \"enemies\": [] - that spawns ANY enemy in the plane, "
+                 "spawnRate 0 included. Remove the key entirely for no overworld "
+                 "enemies." % (plane, biome_rel))
+    if not bad:
+        emit("PASS", "biome-enemy-list",
+             "%s: %d plane-owned biome(s) declare their enemies safely" % (plane, checked))
+
+
+def check_enemy_decks(plane):
+    """Every deck path an enemy names resolves."""
+    enemies, _ = load_plane_json(plane, "world/enemies.json")
+    if enemies is None:
+        emit("BLOCKED", "enemy-deck-resolve", "%s: no enemies.json in plane or common" % plane)
+        return
+    bad = checked = 0
+    for entry in enemies if isinstance(enemies, list) else []:
+        for deck in (entry or {}).get("deck", []) or []:
+            checked += 1
+            if not adventure_path(plane, deck):
+                bad += 1
+                emit("FAIL", "enemy-deck-resolve",
+                     "%s: enemy %r deck %r does not resolve"
+                     % (plane, entry.get("name", "?"), deck))
+    if not bad:
+        emit("PASS", "enemy-deck-resolve", "%s: %d deck path(s) resolve" % (plane, checked))
+
+
+def check_poi_wiring(plane):
+    """POI maps and sprites resolve, and every POI is named by some biome.
+
+    A POI no biome lists is authored content the player can never reach, and
+    nothing in Forge says so.
+    """
+    pois, origin = load_plane_json(plane, "world/points_of_interest.json")
+    if pois is None:
+        emit("BLOCKED", "poi-wiring", "%s: no points_of_interest.json" % plane)
+        return
+    if origin != "plane":
+        emit("PASS", "poi-wiring", "%s: uses common's POIs unchanged" % plane)
+        return
+    bad = 0
+    names = set()
+    for poi in pois if isinstance(pois, list) else []:
+        poi = poi or {}
+        names.add(poi.get("name"))
+        if not adventure_path(plane, poi.get("map")):
+            bad += 1
+            emit("FAIL", "poi-wiring", "%s: POI %r map %r does not resolve"
+                 % (plane, poi.get("name"), poi.get("map")))
+        atlas = adventure_path(plane, poi.get("spriteAtlas"))
+        if not atlas:
+            bad += 1
+            emit("FAIL", "poi-wiring", "%s: POI %r spriteAtlas %r does not resolve"
+                 % (plane, poi.get("name"), poi.get("spriteAtlas")))
+        elif poi.get("sprite") and poi["sprite"] not in atlas_regions(atlas):
+            bad += 1
+            emit("FAIL", "poi-wiring", "%s: POI %r sprite region %r is not in %s"
+                 % (plane, poi.get("name"), poi["sprite"], os.path.basename(atlas)))
+
+    world, _ = load_plane_json(plane, "world/world.json")
+    listed = set()
+    for biome_rel in ((world or {}).get("biomesNames") or []):
+        biome, _o = load_plane_json(plane, biome_rel)
+        for n in ((biome or {}).get("pointsOfInterest") or []):
+            listed.add(n)
+    for orphan in sorted(n for n in names - listed if n):
+        bad += 1
+        emit("FAIL", "poi-wiring",
+             "%s: POI %r is in no biome's pointsOfInterest - it is never placed"
+             % (plane, orphan))
+    for ghost in sorted(n for n in listed - names if n):
+        bad += 1
+        emit("FAIL", "poi-wiring",
+             "%s: a biome lists POI %r which points_of_interest.json does not define"
+             % (plane, ghost))
+    if not bad:
+        emit("PASS", "poi-wiring", "%s: %d POI(s) resolve and are placed" % (plane, len(names)))
+
+
+def check_commander_decks(plane):
+    """A .dck with a [Commander] section must be a legal 100-card deck.
+
+    Adventure applies its deck rules to the PLAYER's deck only - the enemy's
+    deck is registered exactly as written. A 99-card 'commander' deck therefore
+    never errors, it just quietly plays one card short forever.
+    """
+    deck_root = os.path.join(C.REPO, "planes", plane, "decks")
+    if not os.path.isdir(deck_root):
+        emit("PASS", "commander-deck-size", "%s: no plane-local decks" % plane)
+        return
+    bad = checked = 0
+    for dirpath, _d, filenames in os.walk(deck_root):
+        for fn in sorted(filenames):
+            if not fn.endswith(".dck"):
+                continue
+            path = os.path.join(dirpath, fn)
+            rel = os.path.relpath(path, C.REPO)
+            counts = {}
+            section_name = None
+            try:
+                with io.open(path, encoding="utf-8", errors="replace") as f:
+                    lines = f.read().splitlines()
+            except OSError:
+                continue
+            for line in lines:
+                s = line.strip()
+                if s.startswith("["):
+                    section_name = s.lower().strip("[]")
+                    counts.setdefault(section_name, 0)
+                    continue
+                m = re.match(r"^(\d+)\s+(.+)$", s)
+                if m and section_name in ("main", "commander"):
+                    counts[section_name] = counts.get(section_name, 0) + int(m.group(1))
+            if "commander" not in counts:
+                continue
+            checked += 1
+            total = counts.get("main", 0) + counts.get("commander", 0)
+            if total != 100:
+                bad += 1
+                emit("FAIL", "commander-deck-size",
+                     "%s: %d cards in Main+Commander, needs exactly 100" % (rel, total))
+            elif not 1 <= counts["commander"] <= 2:
+                bad += 1
+                emit("FAIL", "commander-deck-size",
+                     "%s: %d commander(s), expected 1 or 2" % (rel, counts["commander"]))
+    if not bad:
+        emit("PASS", "commander-deck-size",
+             "%s: %d commander deck(s) are legal 100-card decks" % (plane, checked))
+
+
 # Checks named in the architecture but not implemented yet. Listed every run.
 TODO_CHECKS = [
     ("quest-reference-resolve",
      "quests.json objectives/dialog actions against the closed enum sets"),
-    ("poi-map-resolve",
-     "points_of_interest.json entries against the .tmx maps they name"),
-    ("tmx-constraints",
-     "Tiled hard constraints: 16x16 tiles, exactly ONE object layer, a tile layer "
-     "carrying spriteLayer=true, <=6 tile layers, CSV format"),
     ("edition-coverage",
      "every card under custom/cards/ has an entry in a custom/editions/ file - "
      "a script with no edition entry is silently skipped"),
@@ -471,6 +1198,18 @@ def main():
     for plane in C.planes():
         check_sprites(plane)
         check_decks(plane)
+        check_commander_decks(plane)
+        check_enemy_decks(plane)
+        check_map_enemies(plane)
+        check_map_links(plane)
+        check_tmx_contracts(plane)
+        check_biome_enemies(plane)
+        check_entry_spawns(plane)
+        check_tile_collision(plane)
+        check_reachability(plane)
+        check_reward_duplicates(plane)
+        check_commander_mode_config(plane)
+        check_poi_wiring(plane)
         check_items(plane)
         check_battle_cards(plane)
         check_ownership(plane)

@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="43" height="21" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="49">
+ <tileset firstgid="1" source="../../../../common/maps/tileset/main.tsx"/>
+ <layer id="1" name="Background" width="43" height="21">
+  <data encoding="base64" compression="zlib">eJzz42Rg8BtiuBIPhqlpw4NhatLwYJiaXBbceNSto24ddeuoW0ktvyq4B5caZDwTCYP0DgYMcstTNgaGHaIQerC6FeaWoeBWfOE6WNIisXgaHgxT08uCG8PU/GHCjUfdOurWUbeOupVabh0KGABQvqOI</data>
+ </layer>
+ <layer id="2" name="Ground" width="43" height="21">
+  <data encoding="base64" compression="zlib">eJxz42RgcBtiGB8YCDWjbh1166hbR91KSvk1mNQQG6YDAbC5abC6FRsYrG7FF66DJS1SI80OVB4fdeuoW0fdOurWoYwBtxyFUQ==</data>
+ </layer>
+ <layer id="3" name="Foreground" width="43" height="21">
+  <properties>
+   <property name="spriteLayer" type="bool" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">eJztwQEBAAAAgiD/r25IQAEAAPBuDhwAAQ==</data>
+ </layer>
+ <objectgroup id="4" name="Objects">
+  <object id="2" template="../../../../common/maps/obj/entry_up.tx" x="16" y="176">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="teleport" value=""/>
+    <property name="teleportObjectId" value=""/>
+   </properties>
+  </object>
+  <object id="10" template="../../../../common/maps/obj/waypoint.tx" x="128" y="48"></object>
+  <object id="11" template="../../../../common/maps/obj/waypoint.tx" x="128" y="112"></object>
+  <object id="12" template="../../../../common/maps/obj/enemy.tx" x="80" y="80">
+   <properties>
+    <property name="enemy" value="lutscherdieb_ramses_assassins"/>
+    <property name="threatRange" type="int" value="20"/>
+    <property name="pursueRange" type="int" value="14"/>
+    <property name="waypoints" value="10,11"/>
+   </properties>
+  </object>
+  <object id="13" template="../../../../common/maps/obj/treasure.tx" x="80" y="32">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;card&quot;,
+  &quot;count&quot;: 1,
+  &quot;addMaxCount&quot;: 3,
+  &quot;colors&quot;: [
+   &quot;Blue&quot;,
+   &quot;Black&quot;
+  ]
+ },
+ {
+  &quot;type&quot;: &quot;shards&quot;,
+  &quot;count&quot;: 2
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="14" template="../../../../common/maps/obj/waypoint.tx" x="224" y="48"></object>
+  <object id="15" template="../../../../common/maps/obj/waypoint.tx" x="272" y="112"></object>
+  <object id="16" template="../../../../common/maps/obj/waypoint.tx" x="176" y="112"></object>
+  <object id="17" template="../../../../common/maps/obj/enemy.tx" x="224" y="80">
+   <properties>
+    <property name="enemy" value="lutscherdieb_ramos_charmslinger_paradigm_token"/>
+    <property name="threatRange" type="int" value="33"/>
+    <property name="pursueRange" type="int" value="24"/>
+    <property name="waypoints" value="14,15,16"/>
+   </properties>
+  </object>
+  <object id="18" template="../../../../common/maps/obj/treasure.tx" x="224" y="32">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;card&quot;,
+  &quot;count&quot;: 2,
+  &quot;addMaxCount&quot;: 3,
+  &quot;colors&quot;: [
+   &quot;White&quot;,
+   &quot;Blue&quot;,
+   &quot;Black&quot;,
+   &quot;Red&quot;,
+   &quot;Green&quot;
+  ]
+ },
+ {
+  &quot;type&quot;: &quot;shards&quot;,
+  &quot;count&quot;: 2
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="19" template="../../../../common/maps/obj/waypoint.tx" x="320" y="112"></object>
+  <object id="20" template="../../../../common/maps/obj/waypoint.tx" x="416" y="112"></object>
+  <object id="21" template="../../../../common/maps/obj/waypoint.tx" x="368" y="48"></object>
+  <object id="22" template="../../../../common/maps/obj/enemy.tx" x="368" y="80">
+   <properties>
+    <property name="enemy" value="lutscherdieb_morcant_elves_counter"/>
+    <property name="threatRange" type="int" value="21"/>
+    <property name="pursueRange" type="int" value="19"/>
+    <property name="waypoints" value="19,20,21"/>
+   </properties>
+  </object>
+  <object id="23" template="../../../../common/maps/obj/treasure.tx" x="368" y="32">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;card&quot;,
+  &quot;count&quot;: 2,
+  &quot;addMaxCount&quot;: 3,
+  &quot;colors&quot;: [
+   &quot;Black&quot;,
+   &quot;Green&quot;
+  ]
+ },
+ {
+  &quot;type&quot;: &quot;shards&quot;,
+  &quot;count&quot;: 2
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="24" template="../../../../common/maps/obj/waypoint.tx" x="560" y="112"></object>
+  <object id="25" template="../../../../common/maps/obj/waypoint.tx" x="464" y="112"></object>
+  <object id="26" template="../../../../common/maps/obj/enemy.tx" x="512" y="80">
+   <properties>
+    <property name="enemy" value="lutscherdieb_vren_removal_rat_colony"/>
+    <property name="threatRange" type="int" value="31"/>
+    <property name="pursueRange" type="int" value="15"/>
+    <property name="waypoints" value="24,25"/>
+   </properties>
+  </object>
+  <object id="27" template="../../../../common/maps/obj/treasure.tx" x="512" y="32">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;card&quot;,
+  &quot;count&quot;: 2,
+  &quot;addMaxCount&quot;: 3,
+  &quot;colors&quot;: [
+   &quot;Blue&quot;,
+   &quot;Black&quot;
+  ]
+ },
+ {
+  &quot;type&quot;: &quot;shards&quot;,
+  &quot;count&quot;: 2
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="28" template="../../../../common/maps/obj/gold.tx" x="464" y="32">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;gold&quot;,
+  &quot;count&quot;: 160,
+  &quot;addMaxCount&quot;: 256
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="29" template="../../../../common/maps/obj/waypoint.tx" x="32" y="304"></object>
+  <object id="30" template="../../../../common/maps/obj/waypoint.tx" x="128" y="304"></object>
+  <object id="31" template="../../../../common/maps/obj/waypoint.tx" x="80" y="240"></object>
+  <object id="32" template="../../../../common/maps/obj/enemy.tx" x="80" y="272">
+   <properties>
+    <property name="enemy" value="lutscherdieb_edgar_vamps"/>
+    <property name="threatRange" type="int" value="39"/>
+    <property name="pursueRange" type="int" value="10"/>
+    <property name="waypoints" value="29,30,31"/>
+   </properties>
+  </object>
+  <object id="33" template="../../../../common/maps/obj/treasure.tx" x="80" y="320">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;card&quot;,
+  &quot;count&quot;: 2,
+  &quot;addMaxCount&quot;: 3,
+  &quot;colors&quot;: [
+   &quot;White&quot;,
+   &quot;Black&quot;,
+   &quot;Red&quot;
+  ]
+ },
+ {
+  &quot;type&quot;: &quot;shards&quot;,
+  &quot;count&quot;: 2
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="34" template="../../../../common/maps/obj/gold.tx" x="32" y="320">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;gold&quot;,
+  &quot;count&quot;: 173,
+  &quot;addMaxCount&quot;: 277
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="35" template="../../../../common/maps/obj/waypoint.tx" x="176" y="240"></object>
+  <object id="36" template="../../../../common/maps/obj/waypoint.tx" x="272" y="304"></object>
+  <object id="37" template="../../../../common/maps/obj/waypoint.tx" x="272" y="240"></object>
+  <object id="38" template="../../../../common/maps/obj/waypoint.tx" x="176" y="304"></object>
+  <object id="39" template="../../../../common/maps/obj/enemy.tx" x="224" y="272">
+   <properties>
+    <property name="enemy" value="lutscherdieb_valgavoth"/>
+    <property name="threatRange" type="int" value="26"/>
+    <property name="pursueRange" type="int" value="19"/>
+    <property name="waypoints" value="35,36,37,38,37,36"/>
+   </properties>
+  </object>
+  <object id="40" template="../../../../common/maps/obj/treasure.tx" x="224" y="320">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;card&quot;,
+  &quot;count&quot;: 2,
+  &quot;addMaxCount&quot;: 3,
+  &quot;colors&quot;: [
+   &quot;Black&quot;,
+   &quot;Red&quot;
+  ]
+ },
+ {
+  &quot;type&quot;: &quot;shards&quot;,
+  &quot;count&quot;: 2
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="41" template="../../../../common/maps/obj/gold.tx" x="176" y="320">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;gold&quot;,
+  &quot;count&quot;: 178,
+  &quot;addMaxCount&quot;: 286
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="42" template="../../../../common/maps/obj/waypoint.tx" x="368" y="240"></object>
+  <object id="43" template="../../../../common/maps/obj/waypoint.tx" x="416" y="304"></object>
+  <object id="44" template="../../../../common/maps/obj/waypoint.tx" x="320" y="304"></object>
+  <object id="45" template="../../../../common/maps/obj/enemy.tx" x="368" y="272">
+   <properties>
+    <property name="enemy" value="lutscherdieb_xenagos_fatties"/>
+    <property name="threatRange" type="int" value="35"/>
+    <property name="pursueRange" type="int" value="18"/>
+    <property name="waypoints" value="42,43,44"/>
+   </properties>
+  </object>
+  <object id="46" template="../../../../common/maps/obj/treasure.tx" x="368" y="320">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;card&quot;,
+  &quot;count&quot;: 2,
+  &quot;addMaxCount&quot;: 3,
+  &quot;colors&quot;: [
+   &quot;Red&quot;,
+   &quot;Green&quot;
+  ]
+ },
+ {
+  &quot;type&quot;: &quot;shards&quot;,
+  &quot;count&quot;: 2
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="47" template="../../../../common/maps/obj/gold.tx" x="320" y="320">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;gold&quot;,
+  &quot;count&quot;: 180,
+  &quot;addMaxCount&quot;: 290
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="3" template="../../../../common/maps/obj/entry_down.tx" x="656" y="176">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="teleport" value="../Archidekt_Vaults/maps/map/vault/lutscherdieb_f2.tmx"/>
+    <property name="teleportObjectId" value="2"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

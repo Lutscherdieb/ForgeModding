@@ -1,0 +1,117 @@
+[
+ {
+  "name": "Vault Landwright",
+  "description": "Foundations",
+  "spriteAtlas": "../common/maps/tileset/buildings.atlas",
+  "sprite": "LandShop",
+  "overlaySprite": "Overlay6Colorless",
+  "rewards": [
+   {
+    "type": "card",
+    "count": 6,
+    "cardTypes": ["Land"]
+   },
+   {
+    "type": "card",
+    "count": 2,
+    "cardTypes": ["Land"],
+    "rarity": ["Rare", "Mythic Rare"]
+   }
+  ]
+ },
+ {
+  "name": "Vault Reliquary",
+  "description": "Artifacts and Engines",
+  "spriteAtlas": "../common/maps/tileset/buildings.atlas",
+  "sprite": "ArtifactShop",
+  "overlaySprite": "Overlay6Colorless",
+  "rewards": [
+   {
+    "type": "card",
+    "count": 6,
+    "cardTypes": ["Artifact"]
+   },
+   {
+    "type": "card",
+    "count": 2,
+    "cardTypes": ["Artifact"],
+    "rarity": ["Rare", "Mythic Rare"]
+   }
+  ]
+ },
+ {
+  "name": "Vault Conclave",
+  "description": "Legends for Hire",
+  "spriteAtlas": "../common/maps/tileset/buildings.atlas",
+  "sprite": "LegendShop",
+  "overlaySprite": "Overlay6White",
+  "rewards": [
+   {
+    "type": "card",
+    "count": 5,
+    "superTypes": ["Legendary"],
+    "cardTypes": ["Creature"]
+   },
+   {
+    "type": "card",
+    "count": 2,
+    "superTypes": ["Legendary"],
+    "rarity": ["Rare", "Mythic Rare"]
+   }
+  ]
+ },
+ {
+  "name": "Vault Prism",
+  "description": "Every Colour at Once",
+  "spriteAtlas": "../common/maps/tileset/buildings.atlas",
+  "sprite": "MultiColorShop",
+  "overlaySprite": "Overlay6Green",
+  "rewards": [
+   {
+    "type": "card",
+    "count": 6,
+    "colorType": "MultiColor"
+   },
+   {
+    "type": "card",
+    "count": 2,
+    "colorType": "MultiColor",
+    "rarity": ["Rare", "Mythic Rare"]
+   }
+  ]
+ },
+ {
+  "name": "Vault Answers",
+  "description": "Removal and Interaction",
+  "spriteAtlas": "../common/maps/tileset/buildings.atlas",
+  "sprite": "InstantShop",
+  "overlaySprite": "Overlay6Blue",
+  "rewards": [
+   {
+    "type": "card",
+    "count": 6,
+    "cardTypes": ["Instant"],
+    "cardText": "(destroy|exile|counter) target"
+   },
+   {
+    "type": "card",
+    "count": 2,
+    "cardText": "(destroy|exile) all"
+   }
+  ]
+ },
+ {
+  "name": "Vault Shard Trader",
+  "description": "Shards for Rerolls",
+  "spriteAtlas": "../common/maps/tileset/buildings.atlas",
+  "sprite": "ShardTrader",
+  "overlaySprite": "Overlay4Colorless",
+  "rewards": [
+   {
+    "type": "card",
+    "count": 4,
+    "rarity": ["Rare", "Mythic Rare"]
+   }
+  ]
+ }
+]
