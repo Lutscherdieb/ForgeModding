@@ -1,0 +1,32 @@
+{
+  "name": "vault",
+  "startPointX": 0.5,
+  "startPointY": 0.5,
+  "noiseWeight": 0.5,
+  "distWeight": 1.5,
+  "tilesetAtlas": "world/tilesets/terrain.atlas",
+  "tilesetName": "White",
+  "terrain": [
+    {
+      "spriteName": "White_1",
+      "max": 0.2,
+      "resolution": 10
+    },
+    {
+      "spriteName": "White_2",
+      "min": 0.8,
+      "max": 1,
+      "resolution": 10
+    }
+  ],
+  "width": 0.9,
+  "height": 0.9,
+  "color": "efe697",
+  "spriteNames": [
+    "DarkGras"
+  ],
+  "pointsOfInterest": [
+    "Vault Town",
+    "Vault_lutscherdieb"
+  ]
+}

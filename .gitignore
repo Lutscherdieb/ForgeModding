@@ -33,3 +33,6 @@ target/
 *.tmx.autosave
 *.xcf
 *.ase
+
+# Archidekt raw deck JSON cache — re-downloadable, never versioned
+.archidekt-cache/

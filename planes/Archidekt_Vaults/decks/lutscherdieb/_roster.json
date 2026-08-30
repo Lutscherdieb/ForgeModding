@@ -1,0 +1,872 @@
+{
+  "user": "Lutscherdieb",
+  "userSlug": "lutscherdieb",
+  "plane": "Archidekt_Vaults",
+  "syncedAt": "2026-08-31",
+  "kept": 21,
+  "seen": 37,
+  "gate": "maindeck excludes includedInDeck=false categories plus 'Sideboard'; must be exactly 100 cards with 1-2 commanders and every card name known to Forge",
+  "decks": [
+    {
+      "id": 15467044,
+      "name": "Kess - Wheel",
+      "listedSize": 110,
+      "url": "https://archidekt.com/decks/15467044",
+      "kept": true,
+      "reason": null,
+      "deckSize": 100,
+      "commanders": [
+        "Kess, Dissident Mage"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "Human",
+        "Wizard"
+      ],
+      "bracketProxy": 22.0,
+      "gameChangers": 6,
+      "tutors": 1,
+      "extraTurns": 0,
+      "massLandDenial": 0,
+      "combos": 5,
+      "priceUsd": 1328,
+      "score": 0.904,
+      "slug": "kess_wheel",
+      "colors": "UBR",
+      "deckPath": "decks/lutscherdieb/kess_wheel.dck"
+    },
+    {
+      "id": 22389597,
+      "name": "Derevi - Tap Effects / Mass Creatures",
+      "listedSize": 110,
+      "url": "https://archidekt.com/decks/22389597",
+      "kept": true,
+      "reason": null,
+      "deckSize": 100,
+      "commanders": [
+        "Derevi, Empyrial Tactician"
+      ],
+      "commanderTypes": [
+        "Bird",
+        "Creature",
+        "Wizard"
+      ],
+      "bracketProxy": 25.5,
+      "gameChangers": 6,
+      "tutors": 0,
+      "extraTurns": 0,
+      "massLandDenial": 0,
+      "combos": 15,
+      "priceUsd": 733,
+      "score": 0.666,
+      "slug": "derevi_tap_effects_mass_creatures",
+      "colors": "WUG",
+      "deckPath": "decks/lutscherdieb/derevi_tap_effects_mass_creatures.dck"
+    },
+    {
+      "id": 22380835,
+      "name": "Bane - OnDeath / ETB - The Spirit Dragons",
+      "listedSize": 110,
+      "url": "https://archidekt.com/decks/22380835",
+      "kept": true,
+      "reason": null,
+      "deckSize": 100,
+      "commanders": [
+        "Bane, Lord of Darkness"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "God"
+      ],
+      "bracketProxy": 12.5,
+      "gameChangers": 1,
+      "tutors": 0,
+      "extraTurns": 0,
+      "massLandDenial": 0,
+      "combos": 19,
+      "priceUsd": 922,
+      "score": 0.511,
+      "slug": "bane_ondeath_etb_the_spirit_dragons",
+      "colors": "WUB",
+      "deckPath": "decks/lutscherdieb/bane_ondeath_etb_the_spirit_dragons.dck"
+    },
+    {
+      "id": 22386197,
+      "name": "Zurzoth - Burn / Group Draw",
+      "listedSize": 110,
+      "url": "https://archidekt.com/decks/22386197",
+      "kept": true,
+      "reason": null,
+      "deckSize": 100,
+      "commanders": [
+        "Zurzoth, Chaos Rider"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "Devil"
+      ],
+      "bracketProxy": 8.5,
+      "gameChangers": 2,
+      "tutors": 0,
+      "extraTurns": 0,
+      "massLandDenial": 0,
+      "combos": 5,
+      "priceUsd": 1075,
+      "score": 0.508,
+      "slug": "zurzoth_burn_group_draw",
+      "colors": "R",
+      "deckPath": "decks/lutscherdieb/zurzoth_burn_group_draw.dck"
+    },
+    {
+      "id": 22389159,
+      "name": "Atraxa - Blink",
+      "listedSize": 103,
+      "url": "https://archidekt.com/decks/22389159",
+      "kept": true,
+      "reason": null,
+      "deckSize": 100,
+      "commanders": [
+        "Atraxa, Grand Unifier"
+      ],
+      "commanderTypes": [
+        "Angel",
+        "Creature",
+        "Phyrexian"
+      ],
+      "bracketProxy": 20.5,
+      "gameChangers": 3,
+      "tutors": 0,
+      "extraTurns": 0,
+      "massLandDenial": 0,
+      "combos": 23,
+      "priceUsd": 511,
+      "score": 0.466,
+      "slug": "atraxa_blink",
+      "colors": "WUBG",
+      "deckPath": "decks/lutscherdieb/atraxa_blink.dck"
+    },
+    {
+      "id": 23843165,
+      "name": "Copy of - Sidar Jabari | Knights",
+      "listedSize": 100,
+      "url": "https://archidekt.com/decks/23843165",
+      "kept": true,
+      "reason": null,
+      "deckSize": 100,
+      "commanders": [
+        "Sidar Jabari of Zhalfir"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "Human",
+        "Knight"
+      ],
+      "bracketProxy": 17.5,
+      "gameChangers": 2,
+      "tutors": 7,
+      "extraTurns": 0,
+      "massLandDenial": 0,
+      "combos": 2,
+      "priceUsd": 592,
+      "score": 0.446,
+      "slug": "copy_of_sidar_jabari_knights",
+      "colors": "WUB",
+      "deckPath": "decks/lutscherdieb/copy_of_sidar_jabari_knights.dck"
+    },
+    {
+      "id": 18834913,
+      "name": "Ashling - Elemental/ETB/Reanimate",
+      "listedSize": 110,
+      "url": "https://archidekt.com/decks/18834913",
+      "kept": true,
+      "reason": null,
+      "deckSize": 100,
+      "commanders": [
+        "Ashling, the Limitless"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "Elemental",
+        "Sorcerer"
+      ],
+      "bracketProxy": 13.0,
+      "gameChangers": 1,
+      "tutors": 2,
+      "extraTurns": 0,
+      "massLandDenial": 0,
+      "combos": 14,
+      "priceUsd": 755,
+      "score": 0.437,
+      "slug": "ashling_elemental_etb_reanimate",
+      "colors": "WUBRG",
+      "deckPath": "decks/lutscherdieb/ashling_elemental_etb_reanimate.dck"
+    },
+    {
+      "id": 19348648,
+      "name": "Mister Fantastic- Populate/Copy Token/Triggered Abilities",
+      "listedSize": 110,
+      "url": "https://archidekt.com/decks/19348648",
+      "kept": true,
+      "reason": null,
+      "deckSize": 100,
+      "commanders": [
+        "Mister Fantastic"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "Hero",
+        "Human",
+        "Scientist"
+      ],
+      "bracketProxy": 12.0,
+      "gameChangers": 2,
+      "tutors": 0,
+      "extraTurns": 0,
+      "massLandDenial": 0,
+      "combos": 12,
+      "priceUsd": 792,
+      "score": 0.436,
+      "slug": "mister_fantastic_populate_copy_token_triggered_abilities",
+      "colors": "WURG",
+      "deckPath": "decks/lutscherdieb/mister_fantastic_populate_copy_token_triggered_abilities.dck"
+    },
+    {
+      "id": 22385542,
+      "name": "Delney - Small Stuff / ETB",
+      "listedSize": 110,
+      "url": "https://archidekt.com/decks/22385542",
+      "kept": true,
+      "reason": null,
+      "deckSize": 100,
+      "commanders": [
+        "Delney, Streetwise Lookout"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "Human",
+        "Scout"
+      ],
+      "bracketProxy": 15.0,
+      "gameChangers": 2,
+      "tutors": 1,
+      "extraTurns": 0,
+      "massLandDenial": 0,
+      "combos": 15,
+      "priceUsd": 627,
+      "score": 0.413,
+      "slug": "delney_small_stuff_etb",
+      "colors": "W",
+      "deckPath": "decks/lutscherdieb/delney_small_stuff_etb.dck"
+    },
+    {
+      "id": 22385012,
+      "name": "Taii - Redirect Loop",
+      "listedSize": 103,
+      "url": "https://archidekt.com/decks/22385012",
+      "kept": true,
+      "reason": null,
+      "deckSize": 100,
+      "commanders": [
+        "Taii Wakeen, Perfect Shot"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "Human",
+        "Mercenary"
+      ],
+      "bracketProxy": 19.0,
+      "gameChangers": 3,
+      "tutors": 3,
+      "extraTurns": 0,
+      "massLandDenial": 0,
+      "combos": 11,
+      "priceUsd": 465,
+      "score": 0.412,
+      "slug": "taii_redirect_loop",
+      "colors": "WR",
+      "deckPath": "decks/lutscherdieb/taii_redirect_loop.dck"
+    },
+    {
+      "id": 15494073,
+      "name": "Kodama - Modify/Landfall",
+      "listedSize": 110,
+      "url": "https://archidekt.com/decks/15494073",
+      "kept": true,
+      "reason": null,
+      "deckSize": 100,
+      "commanders": [
+        "Kodama of the West Tree"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "Spirit"
+      ],
+      "bracketProxy": 9.0,
+      "gameChangers": 1,
+      "tutors": 2,
+      "extraTurns": 0,
+      "massLandDenial": 0,
+      "combos": 6,
+      "priceUsd": 827,
+      "score": 0.393,
+      "slug": "kodama_modify_landfall",
+      "colors": "G",
+      "deckPath": "decks/lutscherdieb/kodama_modify_landfall.dck"
+    },
+    {
+      "id": 15703488,
+      "name": "Kilo - Artifact / Proliferate",
+      "listedSize": 115,
+      "url": "https://archidekt.com/decks/15703488",
+      "kept": true,
+      "reason": null,
+      "deckSize": 100,
+      "commanders": [
+        "Kilo, Apogee Mind"
+      ],
+      "commanderTypes": [
+        "Artifact",
+        "Artificer",
+        "Creature",
+        "Robot"
+      ],
+      "bracketProxy": 12.0,
+      "gameChangers": 2,
+      "tutors": 2,
+      "extraTurns": 0,
+      "massLandDenial": 0,
+      "combos": 6,
+      "priceUsd": 655,
+      "score": 0.368,
+      "slug": "kilo_artifact_proliferate",
+      "colors": "WUR",
+      "deckPath": "decks/lutscherdieb/kilo_artifact_proliferate.dck"
+    },
+    {
+      "id": 22387097,
+      "name": "Kaervek - Crimes / Graveyard Recursion / Black Spells",
+      "listedSize": 110,
+      "url": "https://archidekt.com/decks/22387097",
+      "kept": true,
+      "reason": null,
+      "deckSize": 100,
+      "commanders": [
+        "Kaervek, the Punisher"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "Human",
+        "Warlock"
+      ],
+      "bracketProxy": 7.5,
+      "gameChangers": 1,
+      "tutors": 1,
+      "extraTurns": 0,
+      "massLandDenial": 0,
+      "combos": 6,
+      "priceUsd": 827,
+      "score": 0.364,
+      "slug": "kaervek_crimes_graveyard_recursion_black_spells",
+      "colors": "B",
+      "deckPath": "decks/lutscherdieb/kaervek_crimes_graveyard_recursion_black_spells.dck"
+    },
+    {
+      "id": 22555002,
+      "name": "Copy of - Maha",
+      "listedSize": 131,
+      "url": "https://archidekt.com/decks/22555002",
+      "kept": true,
+      "reason": null,
+      "deckSize": 100,
+      "commanders": [
+        "Maha, Its Feathers Night"
+      ],
+      "commanderTypes": [
+        "Bird",
+        "Creature",
+        "Elemental"
+      ],
+      "bracketProxy": 8.5,
+      "gameChangers": 2,
+      "tutors": 1,
+      "extraTurns": 0,
+      "massLandDenial": 0,
+      "combos": 2,
+      "priceUsd": 740,
+      "score": 0.34,
+      "slug": "copy_of_maha",
+      "colors": "B",
+      "deckPath": "decks/lutscherdieb/copy_of_maha.dck"
+    },
+    {
+      "id": 22328190,
+      "name": "Xenagos - Fatties",
+      "listedSize": 115,
+      "url": "https://archidekt.com/decks/22328190",
+      "kept": true,
+      "reason": null,
+      "deckSize": 100,
+      "commanders": [
+        "Xenagos, God of Revels"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "Enchantment",
+        "God"
+      ],
+      "bracketProxy": 4.0,
+      "gameChangers": 0,
+      "tutors": 1,
+      "extraTurns": 0,
+      "massLandDenial": 0,
+      "combos": 5,
+      "priceUsd": 840,
+      "score": 0.3,
+      "slug": "xenagos_fatties",
+      "colors": "RG",
+      "deckPath": "decks/lutscherdieb/xenagos_fatties.dck"
+    },
+    {
+      "id": 18247250,
+      "name": "Valgavoth",
+      "listedSize": 110,
+      "url": "https://archidekt.com/decks/18247250",
+      "kept": true,
+      "reason": null,
+      "deckSize": 100,
+      "commanders": [
+        "Valgavoth, Harrower of Souls"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "Demon",
+        "Elder"
+      ],
+      "bracketProxy": 2.5,
+      "gameChangers": 0,
+      "tutors": 0,
+      "extraTurns": 0,
+      "massLandDenial": 0,
+      "combos": 5,
+      "priceUsd": 890,
+      "score": 0.295,
+      "slug": "valgavoth",
+      "colors": "BR",
+      "deckPath": "decks/lutscherdieb/valgavoth.dck"
+    },
+    {
+      "id": 14019493,
+      "name": "Edgar - Vamps",
+      "listedSize": 105,
+      "url": "https://archidekt.com/decks/14019493",
+      "kept": true,
+      "reason": null,
+      "deckSize": 100,
+      "commanders": [
+        "Edgar Markov"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "Knight",
+        "Vampire"
+      ],
+      "bracketProxy": 6.5,
+      "gameChangers": 1,
+      "tutors": 0,
+      "extraTurns": 0,
+      "massLandDenial": 0,
+      "combos": 7,
+      "priceUsd": 704,
+      "score": 0.282,
+      "slug": "edgar_vamps",
+      "colors": "WBR",
+      "deckPath": "decks/lutscherdieb/edgar_vamps.dck"
+    },
+    {
+      "id": 22381013,
+      "name": "Vren - Removal / Rat Colony",
+      "listedSize": 120,
+      "url": "https://archidekt.com/decks/22381013",
+      "kept": true,
+      "reason": null,
+      "deckSize": 100,
+      "commanders": [
+        "Vren, the Relentless"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "Rat",
+        "Rogue"
+      ],
+      "bracketProxy": 1.5,
+      "gameChangers": 0,
+      "tutors": 0,
+      "extraTurns": 0,
+      "massLandDenial": 0,
+      "combos": 3,
+      "priceUsd": 842,
+      "score": 0.251,
+      "slug": "vren_removal_rat_colony",
+      "colors": "UB",
+      "deckPath": "decks/lutscherdieb/vren_removal_rat_colony.dck"
+    },
+    {
+      "id": 18240638,
+      "name": "Morcant - Elves /  Counter",
+      "listedSize": 120,
+      "url": "https://archidekt.com/decks/18240638",
+      "kept": true,
+      "reason": null,
+      "deckSize": 100,
+      "commanders": [
+        "High Perfect Morcant"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "Elf",
+        "Noble"
+      ],
+      "bracketProxy": 0.5,
+      "gameChangers": 0,
+      "tutors": 0,
+      "extraTurns": 0,
+      "massLandDenial": 0,
+      "combos": 1,
+      "priceUsd": 751,
+      "score": 0.186,
+      "slug": "morcant_elves_counter",
+      "colors": "BG",
+      "deckPath": "decks/lutscherdieb/morcant_elves_counter.dck"
+    },
+    {
+      "id": 22383637,
+      "name": "Ramos - Charmslinger/Paradigm/Token",
+      "listedSize": 130,
+      "url": "https://archidekt.com/decks/22383637",
+      "kept": true,
+      "reason": null,
+      "deckSize": 100,
+      "commanders": [
+        "Ramos, Dragon Engine"
+      ],
+      "commanderTypes": [
+        "Artifact",
+        "Creature",
+        "Dragon"
+      ],
+      "bracketProxy": 5.5,
+      "gameChangers": 1,
+      "tutors": 1,
+      "extraTurns": 0,
+      "massLandDenial": 0,
+      "combos": 2,
+      "priceUsd": 549,
+      "score": 0.185,
+      "slug": "ramos_charmslinger_paradigm_token",
+      "colors": "WUBRG",
+      "deckPath": "decks/lutscherdieb/ramos_charmslinger_paradigm_token.dck"
+    },
+    {
+      "id": 13862504,
+      "name": "Ramses - Assassins",
+      "listedSize": 100,
+      "url": "https://archidekt.com/decks/13862504",
+      "kept": true,
+      "reason": null,
+      "deckSize": 100,
+      "commanders": [
+        "Ramses, Assassin Lord"
+      ],
+      "commanderTypes": [
+        "Assassin",
+        "Creature",
+        "Human"
+      ],
+      "bracketProxy": 1.0,
+      "gameChangers": 0,
+      "tutors": 0,
+      "extraTurns": 0,
+      "massLandDenial": 0,
+      "combos": 2,
+      "priceUsd": 639,
+      "score": 0.14,
+      "slug": "ramses_assassins",
+      "colors": "UB",
+      "deckPath": "decks/lutscherdieb/ramses_assassins.dck"
+    },
+    {
+      "id": 19468900,
+      "name": "Aragorn - (Zada) Target Instant/Sorcery",
+      "listedSize": 123,
+      "url": "https://archidekt.com/decks/19468900",
+      "kept": false,
+      "reason": "119 cards, needs exactly 100",
+      "deckSize": 119,
+      "commanders": [
+        "Aragorn, the Uniter"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "Human",
+        "Noble"
+      ]
+    },
+    {
+      "id": 23904424,
+      "name": "Artifacts / Graveyard",
+      "listedSize": 119,
+      "url": "https://archidekt.com/decks/23904424",
+      "kept": false,
+      "reason": "119 cards, needs exactly 100",
+      "deckSize": 119,
+      "commanders": [
+        "Urza, Chief Artificer"
+      ],
+      "commanderTypes": [
+        "Artificer",
+        "Creature",
+        "Human"
+      ]
+    },
+    {
+      "id": 22351198,
+      "name": "Azula - Cast during Combat / Instants & Sorceries",
+      "listedSize": 131,
+      "url": "https://archidekt.com/decks/22351198",
+      "kept": false,
+      "reason": "108 cards, needs exactly 100",
+      "deckSize": 108,
+      "commanders": [
+        "Fire Lord Azula"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "Human",
+        "Noble"
+      ]
+    },
+    {
+      "id": 23843156,
+      "name": "Copy of - Copy of - Neera, Wild Mage | Gamba",
+      "listedSize": 111,
+      "url": "https://archidekt.com/decks/23843156",
+      "kept": false,
+      "reason": "91 cards, needs exactly 100",
+      "deckSize": 91,
+      "commanders": [
+        "Neera, Wild Mage"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "Elf",
+        "Human",
+        "Shaman"
+      ]
+    },
+    {
+      "id": 25562338,
+      "name": "Copy of - Toothy/Pir - Imaginary Blink Engine",
+      "listedSize": 107,
+      "url": "https://archidekt.com/decks/25562338",
+      "kept": false,
+      "reason": "106 cards, needs exactly 100",
+      "deckSize": 106,
+      "commanders": [
+        "Toothy, Imaginary Friend",
+        "Pir, Imaginative Rascal"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "Human",
+        "Illusion"
+      ]
+    },
+    {
+      "id": 25305032,
+      "name": "Coram",
+      "listedSize": 133,
+      "url": "https://archidekt.com/decks/25305032",
+      "kept": false,
+      "reason": "109 cards, needs exactly 100",
+      "deckSize": 109,
+      "commanders": [
+        "Coram, the Undertaker"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "Human",
+        "Warrior"
+      ]
+    },
+    {
+      "id": 22386353,
+      "name": "Emry - Artifact / Recursion / Tap Effects",
+      "listedSize": 110,
+      "url": "https://archidekt.com/decks/22386353",
+      "kept": false,
+      "reason": "99 cards, needs exactly 100",
+      "deckSize": 99,
+      "commanders": [
+        "Emry, Lurker of the Loch"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "Merfolk",
+        "Wizard"
+      ]
+    },
+    {
+      "id": 21793775,
+      "name": "Enter/Cast from Graveyard",
+      "listedSize": 128,
+      "url": "https://archidekt.com/decks/21793775",
+      "kept": false,
+      "reason": "122 cards, needs exactly 100",
+      "deckSize": 122,
+      "commanders": [
+        "Terra, Magical Adept // Esper Terra"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "Human",
+        "Warrior",
+        "Wizard"
+      ]
+    },
+    {
+      "id": 25883752,
+      "name": "Imotekh",
+      "listedSize": 133,
+      "url": "https://archidekt.com/decks/25883752",
+      "kept": false,
+      "reason": "133 cards, needs exactly 100",
+      "deckSize": 133,
+      "commanders": [
+        "Imotekh the Stormlord"
+      ],
+      "commanderTypes": [
+        "Artifact",
+        "Creature",
+        "Necron"
+      ]
+    },
+    {
+      "id": 21012586,
+      "name": "Kotis - Voltron",
+      "listedSize": 136,
+      "url": "https://archidekt.com/decks/21012586",
+      "kept": false,
+      "reason": "136 cards, needs exactly 100",
+      "deckSize": 136,
+      "commanders": [
+        "Kotis, the Fangkeeper"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "Warrior",
+        "Zombie"
+      ]
+    },
+    {
+      "id": 23047432,
+      "name": "Kratos - War",
+      "listedSize": 119,
+      "url": "https://archidekt.com/decks/23047432",
+      "kept": false,
+      "reason": "118 cards, needs exactly 100",
+      "deckSize": 118,
+      "commanders": [
+        "Kratos, God of War"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "God",
+        "Warrior"
+      ]
+    },
+    {
+      "id": 22701850,
+      "name": "Marchesa",
+      "listedSize": 113,
+      "url": "https://archidekt.com/decks/22701850",
+      "kept": false,
+      "reason": "104 cards, needs exactly 100",
+      "deckSize": 104,
+      "commanders": [
+        "Marchesa, the Black Rose"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "Human",
+        "Wizard"
+      ]
+    },
+    {
+      "id": 25882428,
+      "name": "Michiko",
+      "listedSize": 118,
+      "url": "https://archidekt.com/decks/25882428",
+      "kept": false,
+      "reason": "118 cards, needs exactly 100",
+      "deckSize": 118,
+      "commanders": [
+        "Michiko Konda, Truth Seeker"
+      ],
+      "commanderTypes": [
+        "Advisor",
+        "Creature",
+        "Human"
+      ]
+    },
+    {
+      "id": 25881205,
+      "name": "Orvhar",
+      "listedSize": 132,
+      "url": "https://archidekt.com/decks/25881205",
+      "kept": false,
+      "reason": "132 cards, needs exactly 100",
+      "deckSize": 132,
+      "commanders": [
+        "Orvar, the All-Form"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "Shapeshifter"
+      ]
+    },
+    {
+      "id": 25883163,
+      "name": "Radagast",
+      "listedSize": 110,
+      "url": "https://archidekt.com/decks/25883163",
+      "kept": false,
+      "reason": "110 cards, needs exactly 100",
+      "deckSize": 110,
+      "commanders": [
+        "Radagast of Rhosgobel"
+      ],
+      "commanderTypes": [
+        "Avatar",
+        "Creature",
+        "Wizard"
+      ]
+    },
+    {
+      "id": 22225498,
+      "name": "Witherbloom - Instant/Sorcery/Token",
+      "listedSize": 121,
+      "url": "https://archidekt.com/decks/22225498",
+      "kept": false,
+      "reason": "120 cards, needs exactly 100",
+      "deckSize": 120,
+      "commanders": [
+        "Witherbloom, the Balancer"
+      ],
+      "commanderTypes": [
+        "Creature",
+        "Dragon",
+        "Elder"
+      ]
+    }
+  ]
+}

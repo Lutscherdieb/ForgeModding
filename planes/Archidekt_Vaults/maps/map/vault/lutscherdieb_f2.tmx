@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="43" height="21" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="63">
+ <tileset firstgid="1" source="../../../../common/maps/tileset/main.tsx"/>
+ <layer id="1" name="Background" width="43" height="21">
+  <data encoding="base64" compression="zlib">eJzz42Rg8Bti+DoeDFNTy4Ibw9Q06uHGMDV3GXBjarq1ghsTo7t1JicmRnfrE3ZMPOrWUbeOZLcOhnIAGYPCajCpQcbIcYUtjgcCg9zylI2BYYcohB6sboW5ZSi4FV+4Dpa0SCy+ggfD1GArZ2AYpqaJGzempluxlYvobsWmBt2t2OJ01K2jbh3Jbh0q5cBQwADJ3c2o</data>
+ </layer>
+ <layer id="2" name="Ground" width="43" height="21">
+  <data encoding="base64" compression="zlib">eJxz42RgcBtiGB8YCDWjbh1166hbR91KSvk1mNQQG6YDAbC5abC6FRsYrG7FF66DJS1SI80OVB4fdeuoW0fdOurWoYwBtxyFUQ==</data>
+ </layer>
+ <layer id="3" name="Foreground" width="43" height="21">
+  <properties>
+   <property name="spriteLayer" type="bool" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">eJztwQEBAAAAgiD/r25IQAEAAPBuDhwAAQ==</data>
+ </layer>
+ <objectgroup id="4" name="Objects">
+  <object id="2" template="../../../../common/maps/obj/entry_up.tx" x="16" y="176">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="teleport" value="../Archidekt_Vaults/maps/map/vault/lutscherdieb_f1.tmx"/>
+    <property name="teleportObjectId" value="3"/>
+   </properties>
+  </object>
+  <object id="10" template="../../../../common/maps/obj/waypoint.tx" x="48" y="64"></object>
+  <object id="11" template="../../../../common/maps/obj/waypoint.tx" x="112" y="64"></object>
+  <object id="12" template="../../../../common/maps/obj/waypoint.tx" x="112" y="96"></object>
+  <object id="13" template="../../../../common/maps/obj/waypoint.tx" x="48" y="96"></object>
+  <object id="14" template="../../../../common/maps/obj/enemy.tx" x="80" y="80">
+   <properties>
+    <property name="enemy" value="lutscherdieb_copy_of_maha"/>
+    <property name="threatRange" type="int" value="23"/>
+    <property name="pursueRange" type="int" value="25"/>
+    <property name="waypoints" value="10,11,12,13"/>
+   </properties>
+  </object>
+  <object id="15" template="../../../../common/maps/obj/treasure.tx" x="80" y="32">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;card&quot;,
+  &quot;count&quot;: 2,
+  &quot;addMaxCount&quot;: 3,
+  &quot;colors&quot;: [
+   &quot;Black&quot;
+  ],
+  &quot;rarity&quot;: [
+   &quot;Rare&quot;,
+   &quot;Mythic Rare&quot;
+  ]
+ },
+ {
+  &quot;type&quot;: &quot;shards&quot;,
+  &quot;count&quot;: 2
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="16" template="../../../../common/maps/obj/gold.tx" x="32" y="32">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;gold&quot;,
+  &quot;count&quot;: 196,
+  &quot;addMaxCount&quot;: 318
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="17" template="../../../../common/maps/obj/waypoint.tx" x="192" y="96"></object>
+  <object id="18" template="../../../../common/maps/obj/waypoint.tx" x="256" y="96"></object>
+  <object id="19" template="../../../../common/maps/obj/waypoint.tx" x="256" y="64"></object>
+  <object id="20" template="../../../../common/maps/obj/waypoint.tx" x="192" y="64"></object>
+  <object id="21" template="../../../../common/maps/obj/enemy.tx" x="224" y="80">
+   <properties>
+    <property name="enemy" value="lutscherdieb_kaervek_crimes_graveyard_recursion_black_spells"/>
+    <property name="threatRange" type="int" value="21"/>
+    <property name="pursueRange" type="int" value="18"/>
+    <property name="waypoints" value="17,18,19,20"/>
+   </properties>
+  </object>
+  <object id="22" template="../../../../common/maps/obj/treasure.tx" x="224" y="32">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;card&quot;,
+  &quot;count&quot;: 2,
+  &quot;addMaxCount&quot;: 3,
+  &quot;colors&quot;: [
+   &quot;Black&quot;
+  ],
+  &quot;rarity&quot;: [
+   &quot;Rare&quot;,
+   &quot;Mythic Rare&quot;
+  ]
+ },
+ {
+  &quot;type&quot;: &quot;shards&quot;,
+  &quot;count&quot;: 2
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="23" template="../../../../common/maps/obj/gold.tx" x="176" y="32">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;gold&quot;,
+  &quot;count&quot;: 206,
+  &quot;addMaxCount&quot;: 335
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="24" template="../../../../common/maps/obj/waypoint.tx" x="320" y="48"></object>
+  <object id="25" template="../../../../common/maps/obj/waypoint.tx" x="416" y="48"></object>
+  <object id="26" template="../../../../common/maps/obj/waypoint.tx" x="416" y="112"></object>
+  <object id="27" template="../../../../common/maps/obj/waypoint.tx" x="320" y="112"></object>
+  <object id="28" template="../../../../common/maps/obj/enemy.tx" x="368" y="80">
+   <properties>
+    <property name="enemy" value="lutscherdieb_kilo_artifact_proliferate"/>
+    <property name="threatRange" type="int" value="32"/>
+    <property name="pursueRange" type="int" value="13"/>
+    <property name="waypoints" value="24,25,26,27,26,25"/>
+   </properties>
+  </object>
+  <object id="29" template="../../../../common/maps/obj/treasure.tx" x="368" y="32">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;card&quot;,
+  &quot;count&quot;: 2,
+  &quot;addMaxCount&quot;: 3,
+  &quot;colors&quot;: [
+   &quot;White&quot;,
+   &quot;Blue&quot;,
+   &quot;Red&quot;
+  ],
+  &quot;rarity&quot;: [
+   &quot;Rare&quot;,
+   &quot;Mythic Rare&quot;
+  ]
+ },
+ {
+  &quot;type&quot;: &quot;shards&quot;,
+  &quot;count&quot;: 2
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="30" template="../../../../common/maps/obj/gold.tx" x="320" y="32">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;gold&quot;,
+  &quot;count&quot;: 207,
+  &quot;addMaxCount&quot;: 338
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="31" template="../../../../common/maps/obj/waypoint.tx" x="464" y="48"></object>
+  <object id="32" template="../../../../common/maps/obj/waypoint.tx" x="560" y="48"></object>
+  <object id="33" template="../../../../common/maps/obj/waypoint.tx" x="560" y="112"></object>
+  <object id="34" template="../../../../common/maps/obj/waypoint.tx" x="464" y="112"></object>
+  <object id="35" template="../../../../common/maps/obj/enemy.tx" x="512" y="80">
+   <properties>
+    <property name="enemy" value="lutscherdieb_kodama_modify_landfall"/>
+    <property name="threatRange" type="int" value="36"/>
+    <property name="pursueRange" type="int" value="22"/>
+    <property name="waypoints" value="31,32,33,34,33,32"/>
+   </properties>
+  </object>
+  <object id="36" template="../../../../common/maps/obj/treasure.tx" x="512" y="32">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;card&quot;,
+  &quot;count&quot;: 2,
+  &quot;addMaxCount&quot;: 4,
+  &quot;colors&quot;: [
+   &quot;Green&quot;
+  ],
+  &quot;rarity&quot;: [
+   &quot;Rare&quot;,
+   &quot;Mythic Rare&quot;
+  ]
+ },
+ {
+  &quot;type&quot;: &quot;shards&quot;,
+  &quot;count&quot;: 3
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="37" template="../../../../common/maps/obj/gold.tx" x="464" y="32">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;gold&quot;,
+  &quot;count&quot;: 217,
+  &quot;addMaxCount&quot;: 355
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="38" template="../../../../common/maps/obj/waypoint.tx" x="32" y="240"></object>
+  <object id="39" template="../../../../common/maps/obj/waypoint.tx" x="128" y="240"></object>
+  <object id="40" template="../../../../common/maps/obj/waypoint.tx" x="128" y="304"></object>
+  <object id="41" template="../../../../common/maps/obj/waypoint.tx" x="32" y="304"></object>
+  <object id="42" template="../../../../common/maps/obj/enemy.tx" x="80" y="272">
+   <properties>
+    <property name="enemy" value="lutscherdieb_taii_redirect_loop"/>
+    <property name="threatRange" type="int" value="38"/>
+    <property name="pursueRange" type="int" value="26"/>
+    <property name="waypoints" value="38,39,40,41,40,39"/>
+   </properties>
+  </object>
+  <object id="43" template="../../../../common/maps/obj/treasure.tx" x="80" y="320">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;card&quot;,
+  &quot;count&quot;: 2,
+  &quot;addMaxCount&quot;: 4,
+  &quot;colors&quot;: [
+   &quot;White&quot;,
+   &quot;Red&quot;
+  ],
+  &quot;rarity&quot;: [
+   &quot;Rare&quot;,
+   &quot;Mythic Rare&quot;
+  ]
+ },
+ {
+  &quot;type&quot;: &quot;shards&quot;,
+  &quot;count&quot;: 3
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="44" template="../../../../common/maps/obj/gold.tx" x="32" y="320">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;gold&quot;,
+  &quot;count&quot;: 225,
+  &quot;addMaxCount&quot;: 368
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="45" template="../../../../common/maps/obj/manashards.tx" x="128" y="320">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;shards&quot;,
+  &quot;count&quot;: 4,
+  &quot;addMaxCount&quot;: 6
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="46" template="../../../../common/maps/obj/waypoint.tx" x="176" y="240"></object>
+  <object id="47" template="../../../../common/maps/obj/waypoint.tx" x="272" y="304"></object>
+  <object id="48" template="../../../../common/maps/obj/waypoint.tx" x="272" y="240"></object>
+  <object id="49" template="../../../../common/maps/obj/waypoint.tx" x="176" y="304"></object>
+  <object id="50" template="../../../../common/maps/obj/enemy.tx" x="224" y="272">
+   <properties>
+    <property name="enemy" value="lutscherdieb_delney_small_stuff_etb"/>
+    <property name="threatRange" type="int" value="34"/>
+    <property name="pursueRange" type="int" value="27"/>
+    <property name="waypoints" value="46,47,48,49,48,47"/>
+   </properties>
+  </object>
+  <object id="51" template="../../../../common/maps/obj/treasure.tx" x="224" y="320">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;card&quot;,
+  &quot;count&quot;: 2,
+  &quot;addMaxCount&quot;: 4,
+  &quot;colors&quot;: [
+   &quot;White&quot;
+  ],
+  &quot;rarity&quot;: [
+   &quot;Rare&quot;,
+   &quot;Mythic Rare&quot;
+  ]
+ },
+ {
+  &quot;type&quot;: &quot;shards&quot;,
+  &quot;count&quot;: 3
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="52" template="../../../../common/maps/obj/gold.tx" x="176" y="320">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;gold&quot;,
+  &quot;count&quot;: 225,
+  &quot;addMaxCount&quot;: 369
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="53" template="../../../../common/maps/obj/manashards.tx" x="272" y="320">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;shards&quot;,
+  &quot;count&quot;: 4,
+  &quot;addMaxCount&quot;: 6
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="54" template="../../../../common/maps/obj/waypoint.tx" x="368" y="240"></object>
+  <object id="55" template="../../../../common/maps/obj/waypoint.tx" x="416" y="304"></object>
+  <object id="56" template="../../../../common/maps/obj/waypoint.tx" x="320" y="304"></object>
+  <object id="57" template="../../../../common/maps/obj/enemy.tx" x="368" y="272">
+   <properties>
+    <property name="enemy" value="lutscherdieb_mister_fantastic_populate_copy_token_triggered_abilities"/>
+    <property name="threatRange" type="int" value="19"/>
+    <property name="pursueRange" type="int" value="24"/>
+    <property name="waypoints" value="54,55,56"/>
+   </properties>
+  </object>
+  <object id="58" template="../../../../common/maps/obj/treasure.tx" x="336" y="320">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;card&quot;,
+  &quot;count&quot;: 2,
+  &quot;addMaxCount&quot;: 4,
+  &quot;colors&quot;: [
+   &quot;White&quot;,
+   &quot;Blue&quot;,
+   &quot;Red&quot;,
+   &quot;Green&quot;
+  ],
+  &quot;rarity&quot;: [
+   &quot;Rare&quot;,
+   &quot;Mythic Rare&quot;
+  ]
+ },
+ {
+  &quot;type&quot;: &quot;shards&quot;,
+  &quot;count&quot;: 3
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="59" template="../../../../common/maps/obj/treasure.tx" x="400" y="320">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;card&quot;,
+  &quot;count&quot;: 2,
+  &quot;addMaxCount&quot;: 4,
+  &quot;colors&quot;: [
+   &quot;White&quot;,
+   &quot;Blue&quot;,
+   &quot;Red&quot;,
+   &quot;Green&quot;
+  ],
+  &quot;rarity&quot;: [
+   &quot;Uncommon&quot;,
+   &quot;Rare&quot;
+  ]
+ },
+ {
+  &quot;type&quot;: &quot;shards&quot;,
+  &quot;count&quot;: 3
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="60" template="../../../../common/maps/obj/gold.tx" x="320" y="320">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;gold&quot;,
+  &quot;count&quot;: 234,
+  &quot;addMaxCount&quot;: 385
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="61" template="../../../../common/maps/obj/manashards.tx" x="416" y="320">
+   <properties>
+    <property name="reward">[
+ {
+  &quot;type&quot;: &quot;shards&quot;,
+  &quot;count&quot;: 4,
+  &quot;addMaxCount&quot;: 6
+ }
+]</property>
+   </properties>
+  </object>
+  <object id="3" template="../../../../common/maps/obj/entry_down.tx" x="656" y="176">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="teleport" value="../Archidekt_Vaults/maps/map/vault/lutscherdieb_f3.tmx"/>
+    <property name="teleportObjectId" value="2"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
